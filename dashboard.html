@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>项目看板 · 船舶</title>
+<style>
+/* === 像素字体 & 基础 === */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #1a1a2e;
+  font-family: 'Press Start 2P', 'Courier New', monospace;
+  color: #e0e0e0;
+  padding: 24px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* === 主容器 === */
+.container {
+  max-width: 960px;
+  width: 100%;
+}
+
+/* === 标题 === */
+.site-title {
+  text-align: center;
+  font-size: 20px;
+  color: #f0e68c;
+  text-shadow: 3px 3px 0 #8b7355, -1px -1px 0 #333;
+  margin-bottom: 12px;
+  letter-spacing: 4px;
+  image-rendering: pixelated;
+}
+
+.site-subtitle {
+  text-align: center;
+  font-size: 9px;
+  color: #888;
+  margin-bottom: 28px;
+  border-bottom: 2px solid #444;
+  padding-bottom: 16px;
+}
+
+/* === 当前状态 === */
+.status-bar {
+  background: #16213e;
+  border: 3px solid #f0e68c;
+  padding: 14px 18px;
+  margin-bottom: 24px;
+  image-rendering: pixelated;
+  box-shadow: 5px 5px 0 #0f0f1a;
+}
+
+.status-bar h2 {
+  font-size: 11px;
+  color: #f0e68c;
+  margin-bottom: 10px;
+}
+
+.status-bar .ship-name {
+  font-size: 10px;
+  color: #ff6b6b;
+  padding: 4px 0;
+  display: inline-block;
+  border: 2px solid #ff6b6b;
+  padding: 5px 12px;
+  background: #2a1a1a;
+}
+
+/* === 项目区块 === */
+.project-card {
+  background: #16213e;
+  border: 3px solid #4a90d9;
+  padding: 16px 18px;
+  margin-bottom: 20px;
+  box-shadow: 5px 5px 0 #0f0f1a;
+  position: relative;
+  image-rendering: pixelated;
+}
+
+.project-card .corner-tl,
+.project-card .corner-tr,
+.project-card .corner-bl,
+.project-card .corner-br {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #4a90d9;
+}
+.project-card .corner-tl { top: -3px; left: -3px; }
+.project-card .corner-tr { top: -3px; right: -3px; }
+.project-card .corner-bl { bottom: -3px; left: -3px; }
+.project-card .corner-br { bottom: -3px; right: -3px; }
+
+.project-name {
+  font-size: 13px;
+  color: #4af0ff;
+  text-shadow: 2px 2px 0 #1a4a5e;
+  margin-bottom: 12px;
+  border-bottom: 2px solid #4a90d9;
+  padding-bottom: 6px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 20px;
+  margin-bottom: 12px;
+}
+
+.info-item {
+  font-size: 8px;
+  line-height: 1.8;
+}
+
+.info-item .label {
+  color: #aaa;
+}
+
+.info-item .value {
+  color: #fff;
+}
+
+/* === 进度条 === */
+.progress-section {
+  margin-bottom: 12px;
+}
+
+.progress-section .label {
+  font-size: 8px;
+  color: #aaa;
+  margin-bottom: 4px;
+}
+
+.progress-bar {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 4px;
+}
+
+.progress-bar .pixel {
+  width: 18px;
+  height: 14px;
+  background: #333;
+  border: 1px solid #555;
+}
+
+.progress-bar .pixel.filled {
+  background: #50fa7b;
+  border-color: #2ea043;
+  box-shadow: 0 0 4px #50fa7b66;
+}
+
+.progress-text {
+  font-size: 8px;
+  color: #888;
+}
+
+/* === 阶段状态 === */
+.stages {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.stage-item {
+  font-size: 7px;
+  padding: 5px 4px;
+  text-align: center;
+  border: 2px solid #444;
+  background: #1a1a2e;
+}
+
+.stage-item .stage-name {
+  color: #aaa;
+  margin-bottom: 3px;
+}
+
+.stage-item .stage-status {
+  color: #fff;
+}
+
+.stage-item.active {
+  border-color: #50fa7b;
+  background: #1a2e1a;
+}
+
+.stage-item.active .stage-name {
+  color: #50fa7b;
+}
+
+.stage-item.future {
+  border-color: #333;
+  opacity: 0.6;
+}
+
+/* === 时间轴 === */
+.timeline {
+  border-top: 2px solid #444;
+  padding-top: 10px;
+}
+
+.timeline h3 {
+  font-size: 8px;
+  color: #f0e68c;
+  margin-bottom: 6px;
+}
+
+.timeline-item {
+  font-size: 7px;
+  color: #ccc;
+  line-height: 2;
+}
+
+.timeline-item .date {
+  color: #f0e68c;
+}
+
+/* === 更新规则 === */
+.rules-box {
+  background: #111;
+  border: 2px solid #555;
+  padding: 12px 14px;
+  margin-top: 16px;
+}
+
+.rules-box h3 {
+  font-size: 9px;
+  color: #f0e68c;
+  margin-bottom: 8px;
+}
+
+.rules-box ul {
+  list-style: none;
+  padding: 0;
+}
+
+.rules-box li {
+  font-size: 7px;
+  color: #aaa;
+  line-height: 2.2;
+  padding-left: 12px;
+  position: relative;
+}
+
+.rules-box li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: #4af0ff;
+}
+
+/* === GitHub 链接 === */
+.footer {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 8px;
+  color: #555;
+}
+
+.footer a {
+  color: #4a90d9;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: #f0e68c;
+}
+
+/* === 响应式 === */
+@media (max-width: 600px) {
+  body { padding: 12px; }
+  .site-title { font-size: 14px; }
+  .info-grid { grid-template-columns: 1fr; }
+  .stages { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- 标题 -->
+  <div class="site-title">🚢 SHIP PROJECTS</div>
+  <div class="site-subtitle">▼ 项目看板 · 像素终端 v1.0 ▼</div>
+
+  <!-- 当前状态：未交船 -->
+  <div class="status-bar">
+    <h2>⚠ 未交船</h2>
+    <div class="ship-name">上海轮渡13</div>
+  </div>
+
+  <!-- 项目：上海轮渡13 -->
+  <div class="project-card">
+    <div class="corner-tl"></div><div class="corner-tr"></div>
+    <div class="corner-bl"></div><div class="corner-br"></div>
+
+    <div class="project-name">▸ 上海轮渡13</div>
+
+    <div class="info-grid">
+      <div class="info-item"><span class="label">合同日期</span><br><span class="value">X</span></div>
+      <div class="info-item"><span class="label">交船日期</span><br><span class="value">X</span></div>
+      <div class="info-item"><span class="label">当前阶段</span><br><span class="value">建造 · 进行中</span></div>
+      <div class="info-item"><span class="label">下一节点</span><br><span class="value">系泊</span></div>
+    </div>
+
+    <div class="progress-section">
+      <div class="label">进度</div>
+      <div class="progress-bar">
+        <div class="pixel filled"></div>
+        <div class="pixel"></div>
+        <div class="pixel"></div>
+        <div class="pixel"></div>
+        <div class="pixel"></div>
+        <div class="pixel"></div>
+        <div class="pixel"></div>
+        <div class="pixel"></div>
+        <div class="pixel"></div>
+        <div class="pixel"></div>
+      </div>
+      <div class="progress-text">1 / 10</div>
+    </div>
+
+    <div class="stages">
+      <div class="stage-item"><div class="stage-name">合同</div><div class="stage-status">▢</div></div>
+      <div class="stage-item"><div class="stage-name">设计</div><div class="stage-status">▢</div></div>
+      <div class="stage-item"><div class="stage-name">审图</div><div class="stage-status">▢</div></div>
+      <div class="stage-item active"><div class="stage-name">建造</div><div class="stage-status">▶ 1/10</div></div>
+      <div class="stage-item future"><div class="stage-name">系泊</div><div class="stage-status">■</div></div>
+      <div class="stage-item future"><div class="stage-name">试航</div><div class="stage-status">■</div></div>
+      <div class="stage-item future"><div class="stage-name">发证</div><div class="stage-status">■</div></div>
+      <div class="stage-item future"><div class="stage-name">交船</div><div class="stage-status">■</div></div>
+    </div>
+
+    <div class="timeline">
+      <h3>▸ 时间轴</h3>
+      <div class="timeline-item"><span class="date">2026-05</span> · 建造</div>
+    </div>
+  </div>
+
+  <!-- 更新规则 -->
+  <div class="rules-box">
+    <h3>▸ 更新规则</h3>
+    <ul>
+      <li>新项目：在根目录创建船名文件夹，在此新增区块</li>
+      <li>进度更新：同步改"当前进度"和对应阶段状态</li>
+      <li>现场日期：记录在项目目录和阶段文件夹名中</li>
+      <li>未交船项目自动在顶部"未交船"栏列出</li>
+      <li>起止日期格式：合同日 → 交船日，无记录用 X</li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    <a href="https://github.com/baxink/project">[ github.com/baxink/project ]</a>
+  </div>
+
+</div>
+
+</body>
+</html>

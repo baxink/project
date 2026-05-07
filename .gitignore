@@ -1,0 +1,7 @@
+CLAUDE.md
+.DS_Store
+Thumbs.db
+._*
+~$*
+*.tmp
+.env.local

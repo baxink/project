@@ -1,11 +1,2 @@
-CLAUDE.md
-.DS_Store
-Thumbs.db
-._*
-~$*
-*.tmp
-.env.local
-
-# 项目文件夹：仅上传 README 和 dashboard.md，项目内部文件不上传
-上海轮渡13/
-中远海重工30万吨浮船坞/
+*
+!README.md

@@ -1,3 +1,8 @@
+# Keep local project folders private; only publish the stage board site.
 *
+!.gitignore
+!.nojekyll
 !README.md
-!dashboard.md
+!index.html
+!assets/
+!assets/**

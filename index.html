@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Projects · 阶段看板</title>
+    <script type="module" crossorigin src="/project/assets/index-DRAbw_s7.js"></script>
+    <link rel="stylesheet" crossorigin href="/project/assets/index-BVVediHM.css">
+  </head>
+  <body>
+    <div class="page">
+      <header class="top">
+        <div class="brand">
+          <span class="dot"></span>
+          <div>
+            <p class="brand-name">Projects</p>
+            <p class="brand-sub">阶段 · 小阶段 · 里程碑</p>
+          </div>
+        </div>
+        <div class="tabs" id="tabs" role="tablist"></div>
+      </header>
+
+      <section class="hero" id="hero"></section>
+
+      <!-- 大阶段轨道 -->
+      <section class="track-wrap" aria-label="项目大阶段">
+        <div class="track-head">
+          <h2>大阶段</h2>
+          <p>点击阶段查看其下小阶段</p>
+        </div>
+        <ol class="track" id="track"></ol>
+      </section>
+
+      <!-- 当前大阶段的小阶段 -->
+      <section class="detail" id="detail"></section>
+    </div>
+  </body>
+</html>

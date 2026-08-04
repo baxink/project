@@ -1,6 +1,6 @@
 # 当前建造项目列表
 
-阶段看板（HTML）：https://baxink.github.io/project/
+阶段看板（HTML · Tokyo Night）：https://baxink.github.io/project/
 
 ### 项目：上海轮渡13
 - 目录：`./上海轮渡13/`

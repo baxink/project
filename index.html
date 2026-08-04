@@ -1,38 +1,1265 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Projects · 阶段看板</title>
-    <script type="module" crossorigin src="/project/assets/index-DC138kst.js"></script>
-    <link rel="stylesheet" crossorigin href="/project/assets/index-BVVediHM.css">
-  </head>
-  <body>
-    <div class="page">
-      <header class="top">
-        <div class="brand">
-          <span class="dot"></span>
-          <div>
-            <p class="brand-name">Projects</p>
-            <p class="brand-sub">阶段 · 小阶段 · 里程碑</p>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects · 中远海重工30万吨浮船坞 · 项目进度</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* Tokyo Night palette — night / storm hybrid */
+    :root {
+      --bg: #1a1b26;
+      --bg-deep: #16161e;
+      --bg-elev: #1f2335;
+      --bg-soft: #24283b;
+      --line: #3b4261;
+      --line-strong: #565f89;
+      --text: #c0caf5;
+      --text-bright: #c0caf5;
+      --text-muted: #a9b1d6;
+      --text-dim: #565f89;
+      --accent: #7aa2f7;          /* blue */
+      --accent-soft: rgba(122, 162, 247, 0.14);
+      --accent-2: #bb9af7;      /* magenta */
+      --accent-2-soft: rgba(187, 154, 247, 0.14);
+      --cyan: #7dcfff;
+      --cyan-soft: rgba(125, 207, 255, 0.12);
+      --teal: #73daca;
+      --ok: #9ece6a;             /* green */
+      --ok-soft: rgba(158, 206, 106, 0.14);
+      --warn: #ff9e64;           /* orange */
+      --warn-soft: rgba(255, 158, 100, 0.14);
+      --crit: #f7768e;           /* red */
+      --crit-soft: rgba(247, 118, 142, 0.14);
+      --info: #7dcfff;           /* cyan */
+      --info-soft: rgba(125, 207, 255, 0.14);
+      --yellow: #e0af68;
+      --steel: #7aa2f7;
+      --radius: 6px;
+      --font: "IBM Plex Sans", "Noto Sans SC", system-ui, sans-serif;
+      --mono: "IBM Plex Mono", ui-monospace, monospace;
+      --glow-blue: 0 0 24px rgba(122, 162, 247, 0.22);
+      --glow-mag: 0 0 20px rgba(187, 154, 247, 0.18);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background:
+        radial-gradient(1100px 560px at 8% -8%, rgba(122, 162, 247, 0.12), transparent 55%),
+        radial-gradient(900px 520px at 96% 0%, rgba(187, 154, 247, 0.10), transparent 50%),
+        radial-gradient(700px 400px at 50% 100%, rgba(125, 207, 255, 0.05), transparent 55%),
+        linear-gradient(180deg, var(--bg-deep) 0%, var(--bg) 40%, #1a1b26 100%);
+      color: var(--text);
+      line-height: 1.55;
+      min-height: 100vh;
+    }
+
+    /* cyber grid */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.045;
+      background-image:
+        linear-gradient(90deg, #7aa2f7 1px, transparent 1px),
+        linear-gradient(#bb9af7 1px, transparent 1px);
+      background-size: 40px 40px;
+      z-index: 0;
+      mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, #000 20%, transparent 75%);
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+    }
+
+    /* —— header —— */
+    header.top {
+      display: grid;
+      gap: 1.25rem;
+      margin-bottom: 2.25rem;
+      padding-bottom: 1.75rem;
+      border-bottom: 1px solid var(--line);
+      position: relative;
+    }
+
+    header.top::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+      width: min(280px, 40%);
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2), transparent);
+      box-shadow: 0 0 12px rgba(122, 162, 247, 0.45);
+    }
+
+    .eyebrow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
+      align-items: center;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .eyebrow .dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--cyan);
+      box-shadow:
+        0 0 0 3px var(--cyan-soft),
+        0 0 10px rgba(125, 207, 255, 0.7);
+      animation: pulse-dot 2.4s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; box-shadow: 0 0 0 3px var(--cyan-soft), 0 0 10px rgba(125, 207, 255, 0.7); }
+      50% { opacity: 0.75; box-shadow: 0 0 0 5px transparent, 0 0 16px rgba(125, 207, 255, 0.35); }
+    }
+
+    h1 {
+      font-size: clamp(1.55rem, 3.5vw, 2.15rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      background: linear-gradient(120deg, #c0caf5 0%, #7aa2f7 45%, #bb9af7 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    h1 span.sub {
+      display: block;
+      margin-top: 0.35rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: 0;
+      background: none;
+      -webkit-background-clip: unset;
+      background-clip: unset;
+    }
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 1.5rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .meta-row strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.22rem 0.55rem;
+      border-radius: 3px;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      border: 1px solid transparent;
+    }
+
+    .badge.live {
+      background: var(--warn-soft);
+      color: var(--warn);
+      border-color: rgba(255, 158, 100, 0.4);
+      box-shadow: 0 0 12px rgba(255, 158, 100, 0.12);
+    }
+
+    .badge.ok {
+      background: var(--ok-soft);
+      color: var(--ok);
+      border-color: rgba(158, 206, 106, 0.4);
+    }
+
+    .badge.crit {
+      background: var(--crit-soft);
+      color: var(--crit);
+      border-color: rgba(247, 118, 142, 0.4);
+    }
+
+    .badge.info {
+      background: var(--info-soft);
+      color: var(--cyan);
+      border-color: rgba(125, 207, 255, 0.35);
+    }
+
+    .badge.mag {
+      background: var(--accent-2-soft);
+      color: var(--accent-2);
+      border-color: rgba(187, 154, 247, 0.4);
+    }
+
+    /* —— section chrome —— */
+    section {
+      margin-bottom: 2.5rem;
+    }
+
+    .sec-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .sec-head h2 {
+      font-size: 0.78rem;
+      font-weight: 600;
+      font-family: var(--mono);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .sec-head h2::before {
+      content: "// ";
+      color: var(--accent-2);
+      opacity: 0.85;
+    }
+
+    .sec-head .hint {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+    }
+
+    /* —— stage rail —— */
+    .stage-rail {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 0;
+      position: relative;
+      padding: 0.5rem 0 0.25rem;
+    }
+
+    .stage-rail::before {
+      content: "";
+      position: absolute;
+      left: 6%;
+      right: 6%;
+      top: 1.15rem;
+      height: 2px;
+      background: linear-gradient(90deg,
+        var(--ok) 0%,
+        var(--ok) 37.5%,
+        var(--accent) 37.5%,
+        var(--accent) 50%,
+        var(--line) 50%,
+        var(--line) 100%);
+      z-index: 0;
+      opacity: 0.85;
+      box-shadow: 0 0 10px rgba(158, 206, 106, 0.25);
+    }
+
+    .stage {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 0 0.15rem;
+    }
+
+    .stage .node {
+      width: 1.15rem;
+      height: 1.15rem;
+      margin: 0 auto 0.55rem;
+      border-radius: 50%;
+      border: 2px solid var(--line-strong);
+      background: var(--bg-deep);
+    }
+
+    .stage.done .node {
+      background: var(--ok);
+      border-color: var(--ok);
+      box-shadow: 0 0 0 3px var(--ok-soft), 0 0 12px rgba(158, 206, 106, 0.45);
+    }
+
+    .stage.current .node {
+      background: var(--accent);
+      border-color: var(--cyan);
+      box-shadow:
+        0 0 0 4px var(--accent-soft),
+        0 0 16px rgba(122, 162, 247, 0.65);
+    }
+
+    .stage.todo .node {
+      background: var(--bg-soft);
+      border-color: var(--line);
+    }
+
+    .stage .label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-dim);
+    }
+
+    .stage.done .label { color: var(--ok); }
+    .stage.current .label { color: var(--cyan); }
+
+    .stage .idx {
+      display: block;
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      color: var(--text-dim);
+      margin-top: 0.15rem;
+    }
+
+    /* —— KPI strip —— */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: linear-gradient(135deg, rgba(122, 162, 247, 0.45), rgba(187, 154, 247, 0.35), rgba(125, 207, 255, 0.3));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--glow-blue);
+    }
+
+    .kpi {
+      background: var(--bg-elev);
+      padding: 1.15rem 1.1rem 1.25rem;
+      position: relative;
+    }
+
+    .kpi::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, rgba(122, 162, 247, 0.06), transparent 55%);
+      pointer-events: none;
+    }
+
+    .kpi .k {
+      font-size: 0.72rem;
+      color: var(--accent-2);
+      font-family: var(--mono);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 0.45rem;
+      position: relative;
+    }
+
+    .kpi .v {
+      font-size: 1.65rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      font-variant-numeric: tabular-nums;
+      line-height: 1.1;
+      color: var(--text);
+      position: relative;
+      text-shadow: 0 0 24px rgba(122, 162, 247, 0.25);
+    }
+
+    .kpi .v em {
+      font-style: normal;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-dim);
+      margin-left: 0.25rem;
+    }
+
+    .kpi .bar-row {
+      margin-top: 0.75rem;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      color: var(--cyan);
+      text-shadow: 0 0 10px rgba(125, 207, 255, 0.35);
+      position: relative;
+    }
+
+    .kpi .note {
+      margin-top: 0.35rem;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      position: relative;
+    }
+
+    /* —— progress meters —— */
+    .meter-list {
+      display: grid;
+      gap: 0.85rem;
+    }
+
+    .meter {
+      display: grid;
+      grid-template-columns: 5.5rem 1fr auto;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .meter .name {
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+
+    .meter .track {
+      height: 8px;
+      background: var(--bg-deep);
+      border: 1px solid var(--line);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .meter .fill {
+      height: 100%;
+      border-radius: 1px;
+      background: linear-gradient(90deg, #449dab, var(--ok));
+      box-shadow: 0 0 10px rgba(158, 206, 106, 0.45);
+    }
+
+    .meter .fill.warn {
+      background: linear-gradient(90deg, #c0a36e, var(--warn));
+      box-shadow: 0 0 10px rgba(255, 158, 100, 0.4);
+    }
+
+    .meter .fill.accent {
+      background: linear-gradient(90deg, #7aa2f7, var(--cyan));
+      box-shadow: 0 0 10px rgba(122, 162, 247, 0.5);
+    }
+
+    .meter .pct {
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      font-variant-numeric: tabular-nums;
+      color: var(--cyan);
+      min-width: 3.2rem;
+      text-align: right;
+    }
+
+    /* —— two col —— */
+    .cols {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 1.25rem;
+    }
+
+    .panel {
+      background: linear-gradient(165deg, rgba(36, 40, 59, 0.95), rgba(26, 27, 38, 0.98));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.15rem 1.2rem 1.25rem;
+      box-shadow: 0 0 0 1px rgba(122, 162, 247, 0.04) inset;
+    }
+
+    .panel h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.9rem;
+      padding-bottom: 0.55rem;
+      border-bottom: 1px solid var(--line);
+      color: var(--text);
+    }
+
+    .panel h3::after {
+      content: "";
+      display: block;
+      width: 2.5rem;
+      height: 2px;
+      margin-top: 0.55rem;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      border-radius: 1px;
+    }
+
+    /* —— tables —— */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.84rem;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 0.5rem 0.4rem;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+
+    th {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      font-weight: 500;
+    }
+
+    td.num {
+      font-family: var(--mono);
+      font-variant-numeric: tabular-nums;
+      text-align: right;
+    }
+
+    tr:last-child th,
+    tr:last-child td { border-bottom: none; }
+
+    tr.highlight td {
+      background: linear-gradient(90deg, rgba(122, 162, 247, 0.12), rgba(187, 154, 247, 0.08));
+    }
+
+    code {
+      font-family: var(--mono);
+      font-size: 0.86em;
+      color: var(--cyan);
+      background: rgba(125, 207, 255, 0.08);
+      padding: 0.05em 0.35em;
+      border-radius: 3px;
+      border: 1px solid rgba(125, 207, 255, 0.15);
+    }
+
+    /* —— timeline —— */
+    .timeline {
+      list-style: none;
+      display: grid;
+      gap: 0;
+    }
+
+    .timeline li {
+      display: grid;
+      grid-template-columns: 6.5rem 1fr;
+      gap: 1rem;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--line);
+      position: relative;
+    }
+
+    .timeline li:last-child { border-bottom: none; }
+
+    .timeline .date {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--accent-2);
+      padding-top: 0.1rem;
+      text-shadow: 0 0 12px rgba(187, 154, 247, 0.3);
+    }
+
+    .timeline .body strong {
+      display: block;
+      font-size: 0.92rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .timeline .body p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .timeline .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.45rem;
+    }
+
+    /* —— issues —— */
+    .issue-list {
+      list-style: none;
+      display: grid;
+      gap: 0.65rem;
+    }
+
+    .issue {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.75rem;
+      padding: 0.75rem 0.85rem;
+      background: var(--bg-soft);
+      border-left: 3px solid var(--line-strong);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+
+    .issue.crit { border-left-color: var(--crit); }
+    .issue.warn { border-left-color: var(--warn); }
+    .issue.ok { border-left-color: var(--ok); }
+    .issue.info { border-left-color: var(--info); }
+
+    .issue .sev {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.04em;
+      padding-top: 0.2rem;
+      color: var(--text-dim);
+      white-space: nowrap;
+    }
+
+    .issue.crit .sev { color: var(--crit); }
+    .issue.warn .sev { color: var(--warn); }
+    .issue.ok .sev { color: var(--ok); }
+    .issue.info .sev { color: var(--cyan); }
+
+    .issue.crit { background: linear-gradient(90deg, rgba(247, 118, 142, 0.1), var(--bg-soft)); }
+    .issue.warn { background: linear-gradient(90deg, rgba(255, 158, 100, 0.1), var(--bg-soft)); }
+    .issue.ok { background: linear-gradient(90deg, rgba(158, 206, 106, 0.1), var(--bg-soft)); }
+    .issue.info { background: linear-gradient(90deg, rgba(125, 207, 255, 0.08), var(--bg-soft)); }
+
+    .issue .title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+
+    .issue .desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* —— region matrix —— */
+    .region-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.65rem;
+    }
+
+    .region {
+      padding: 0.85rem 0.9rem;
+      background: linear-gradient(160deg, rgba(36, 40, 59, 0.9), rgba(26, 27, 38, 0.95));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+
+    .region:hover {
+      border-color: rgba(122, 162, 247, 0.45);
+      box-shadow: 0 0 18px rgba(122, 162, 247, 0.12);
+    }
+
+    .region .r-name {
+      font-weight: 600;
+      font-size: 0.88rem;
+      margin-bottom: 0.15rem;
+      color: var(--text);
+    }
+
+    .region .r-count {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--accent-2);
+      margin-bottom: 0.55rem;
+    }
+
+    .region .mini {
+      display: grid;
+      gap: 0.35rem;
+      font-size: 0.75rem;
+    }
+
+    .region .mini-row {
+      display: grid;
+      grid-template-columns: 2.2rem 1fr 2.4rem;
+      gap: 0.4rem;
+      align-items: center;
+      color: var(--text-muted);
+    }
+
+    .region .mini-track {
+      height: 4px;
+      background: var(--bg);
+      border-radius: 1px;
+      overflow: hidden;
+    }
+
+    .region .mini-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #449dab, var(--ok));
+      box-shadow: 0 0 6px rgba(158, 206, 106, 0.35);
+    }
+
+    .region .mini-fill.zero { background: var(--line); width: 0 !important; box-shadow: none; }
+    .region .mini-fill.low {
+      background: linear-gradient(90deg, #c0a36e, var(--warn));
+      box-shadow: 0 0 6px rgba(255, 158, 100, 0.35);
+    }
+
+    .region .mini-row span:last-child {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      text-align: right;
+    }
+
+    /* —— archive index —— */
+    .archive {
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    .archive a,
+    .archive .item {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 0.75rem;
+      align-items: center;
+      padding: 0.7rem 0.85rem;
+      background: linear-gradient(120deg, rgba(31, 35, 53, 0.95), rgba(26, 27, 38, 0.98));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+    }
+
+    .archive .item:hover {
+      border-color: rgba(122, 162, 247, 0.5);
+      background: var(--bg-soft);
+      box-shadow: 0 0 16px rgba(122, 162, 247, 0.12);
+    }
+
+    .archive .code {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--cyan);
+      white-space: nowrap;
+      text-shadow: 0 0 8px rgba(125, 207, 255, 0.35);
+    }
+
+    .archive .name {
+      font-size: 0.88rem;
+    }
+
+    .archive .name small {
+      display: block;
+      color: var(--text-dim);
+      font-size: 0.75rem;
+      margin-top: 0.1rem;
+    }
+
+    .archive .n {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* —— footer —— */
+    footer {
+      margin-top: 2rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--line);
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.5rem;
+      justify-content: space-between;
+    }
+
+    footer code {
+      font-family: var(--mono);
+      color: var(--accent);
+      background: none;
+      border: none;
+      padding: 0;
+    }
+
+    /* —— responsive —— */
+    @media (max-width: 900px) {
+      .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+      .cols { grid-template-columns: 1fr; }
+      .region-grid { grid-template-columns: repeat(2, 1fr); }
+      .stage-rail { grid-template-columns: repeat(4, 1fr); gap: 1rem 0; }
+      .stage-rail::before { display: none; }
+    }
+
+    @media (max-width: 520px) {
+      .kpi-grid { grid-template-columns: 1fr; }
+      .region-grid { grid-template-columns: 1fr; }
+      .meter { grid-template-columns: 4rem 1fr auto; }
+      .timeline li { grid-template-columns: 1fr; gap: 0.25rem; }
+      .archive .item { grid-template-columns: 1fr; }
+    }
+
+    @media print {
+      body { background: #fff; color: #111; }
+      body::before { display: none; }
+      .panel, .kpi, .region, .archive .item {
+        background: #fff;
+        border-color: #ccc;
+      }
+      .badge, .issue { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <div class="eyebrow">
+        <span class="dot" aria-hidden="true"></span>
+        <span>COSCO SHIPPING Heavy Industry</span>
+        <span>·</span>
+        <span>SH300KFD26B</span>
+        <span class="badge live">建造中 · 1–10</span>
+      </div>
+      <h1>
+        中远海重工 30 万吨浮船坞
+        <span class="sub">项目进度看板 · 数据截至 2026-07-30 南通现场</span>
+      </h1>
+      <div class="meta-row">
+        <span>船东：<strong>上海中远海运重工有限公司</strong></span>
+        <span>当前阶段：<strong>建造</strong></span>
+        <span>起始记录：<strong>2026-05-19</strong></span>
+        <span>最新现场：<strong>2026-07-30</strong></span>
+      </div>
+    </header>
+
+    <!-- 全项目阶段 -->
+    <section>
+      <div class="sec-head">
+        <h2>项目阶段</h2>
+        <span class="hint">合同 → 设计 → 审图 → 建造 → 系泊 → 试航 → 发证 → 交船</span>
+      </div>
+      <div class="stage-rail" role="list" aria-label="项目八阶段">
+        <div class="stage done" role="listitem">
+          <div class="node"></div>
+          <div class="label">合同</div>
+          <span class="idx">01</span>
+        </div>
+        <div class="stage done" role="listitem">
+          <div class="node"></div>
+          <div class="label">设计</div>
+          <span class="idx">02</span>
+        </div>
+        <div class="stage done" role="listitem">
+          <div class="node"></div>
+          <div class="label">审图</div>
+          <span class="idx">03</span>
+        </div>
+        <div class="stage current" role="listitem">
+          <div class="node"></div>
+          <div class="label">建造</div>
+          <span class="idx">04 · 当前</span>
+        </div>
+        <div class="stage todo" role="listitem">
+          <div class="node"></div>
+          <div class="label">系泊</div>
+          <span class="idx">05</span>
+        </div>
+        <div class="stage todo" role="listitem">
+          <div class="node"></div>
+          <div class="label">试航</div>
+          <span class="idx">06</span>
+        </div>
+        <div class="stage todo" role="listitem">
+          <div class="node"></div>
+          <div class="label">发证</div>
+          <span class="idx">07</span>
+        </div>
+        <div class="stage todo" role="listitem">
+          <div class="node"></div>
+          <div class="label">交船</div>
+          <span class="idx">08</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- KPI -->
+    <section>
+      <div class="sec-head">
+        <h2>进度总览</h2>
+        <span class="hint">进度同时保留 █/░ 条与 N–M 步数</span>
+      </div>
+      <div class="kpi-grid">
+        <div class="kpi">
+          <div class="k">建造全局</div>
+          <div class="v">1<em>/10</em></div>
+          <div class="bar-row" aria-label="建造进度 1/10">█░░░░░░░░░</div>
+          <div class="note">其他专业数据待补，全局仍记 1–10</div>
+        </div>
+        <div class="kpi">
+          <div class="k">管系专业</div>
+          <div class="v">8<em>/10</em></div>
+          <div class="bar-row" aria-label="管系进度 8/10">████████░░</div>
+          <div class="note">装配 / 外观 / 试压分项见下</div>
+        </div>
+        <div class="kpi">
+          <div class="k">管件总量</div>
+          <div class="v">2,123<em>根</em></div>
+          <div class="note" style="margin-top:0.75rem">21 系统 · 6 区域 · 追溯总表 05-19</div>
+        </div>
+        <div class="kpi">
+          <div class="k">HC 水压累计报验</div>
+          <div class="v">97<em>根</em></div>
+          <div class="note" style="margin-top:0.75rem">049+065+081 · 待签认闭环</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 管系工序 -->
+    <section>
+      <div class="sec-head">
+        <h2>管系工序完成率</h2>
+        <span class="hint">来源：2026-05-19 管系追溯状态表 · 材料闭环前不改写总试压 %</span>
+      </div>
+      <div class="panel">
+        <div class="meter-list">
+          <div class="meter">
+            <div class="name">装配</div>
+            <div class="track"><div class="fill" style="width:87.7%"></div></div>
+            <div class="pct">87.7%</div>
+          </div>
+          <div class="meter">
+            <div class="name">外观</div>
+            <div class="track"><div class="fill accent" style="width:81.9%"></div></div>
+            <div class="pct">81.9%</div>
+          </div>
+          <div class="meter">
+            <div class="name">试压</div>
+            <div class="track"><div class="fill warn" style="width:76.3%"></div></div>
+            <div class="pct">76.3%</div>
           </div>
         </div>
-        <div class="tabs" id="tabs" role="tablist"></div>
-      </header>
+        <p style="margin-top:1rem;font-size:0.8rem;color:var(--text-dim)">
+          完成 / 剩余：装配 1,862 / 261 · 外观 1,739 / 384 · 试压 1,620 / 503
+        </p>
+      </div>
+    </section>
 
-      <section class="hero" id="hero"></section>
-
-      <!-- 大阶段轨道 -->
-      <section class="track-wrap" aria-label="项目大阶段">
-        <div class="track-head">
-          <h2>大阶段</h2>
-          <p>点击阶段查看其下小阶段</p>
+    <!-- 区域 + 系统 -->
+    <section>
+      <div class="sec-head">
+        <h2>区域与关键系统</h2>
+        <span class="hint">坞墙 / 首部平台未开工；HC 工序衔接需关注</span>
+      </div>
+      <div class="region-grid" style="margin-bottom:1.25rem">
+        <div class="region">
+          <div class="r-name">压载舱</div>
+          <div class="r-count">761 根</div>
+          <div class="mini">
+            <div class="mini-row"><span>装配</span><div class="mini-track"><div class="mini-fill" style="width:100%"></div></div><span>100%</span></div>
+            <div class="mini-row"><span>外观</span><div class="mini-track"><div class="mini-fill" style="width:100%"></div></div><span>100%</span></div>
+            <div class="mini-row"><span>试压</span><div class="mini-track"><div class="mini-fill" style="width:100%"></div></div><span>100%</span></div>
+          </div>
         </div>
-        <ol class="track" id="track"></ol>
-      </section>
+        <div class="region">
+          <div class="r-name">泵舱过道</div>
+          <div class="r-count">427 根</div>
+          <div class="mini">
+            <div class="mini-row"><span>装配</span><div class="mini-track"><div class="mini-fill" style="width:98.6%"></div></div><span>98.6%</span></div>
+            <div class="mini-row"><span>外观</span><div class="mini-track"><div class="mini-fill" style="width:94.6%"></div></div><span>94.6%</span></div>
+            <div class="mini-row"><span>试压</span><div class="mini-track"><div class="mini-fill" style="width:87.8%"></div></div><span>87.8%</span></div>
+          </div>
+        </div>
+        <div class="region">
+          <div class="r-name">泵舱左</div>
+          <div class="r-count">400 根</div>
+          <div class="mini">
+            <div class="mini-row"><span>装配</span><div class="mini-track"><div class="mini-fill" style="width:88.8%"></div></div><span>88.8%</span></div>
+            <div class="mini-row"><span>外观</span><div class="mini-track"><div class="mini-fill" style="width:78.8%"></div></div><span>78.8%</span></div>
+            <div class="mini-row"><span>试压</span><div class="mini-track"><div class="mini-fill low" style="width:67%"></div></div><span>67.0%</span></div>
+          </div>
+        </div>
+        <div class="region">
+          <div class="r-name">泵舱右</div>
+          <div class="r-count">380 根 · 薄弱</div>
+          <div class="mini">
+            <div class="mini-row"><span>装配</span><div class="mini-track"><div class="mini-fill" style="width:85.5%"></div></div><span>85.5%</span></div>
+            <div class="mini-row"><span>外观</span><div class="mini-track"><div class="mini-fill low" style="width:68.2%"></div></div><span>68.2%</span></div>
+            <div class="mini-row"><span>试压</span><div class="mini-track"><div class="mini-fill low" style="width:56.8%"></div></div><span>56.8%</span></div>
+          </div>
+        </div>
+        <div class="region">
+          <div class="r-name">坞墙</div>
+          <div class="r-count">67 根 · 未开工</div>
+          <div class="mini">
+            <div class="mini-row"><span>装配</span><div class="mini-track"><div class="mini-fill zero"></div></div><span>0%</span></div>
+            <div class="mini-row"><span>外观</span><div class="mini-track"><div class="mini-fill zero"></div></div><span>0%</span></div>
+            <div class="mini-row"><span>试压</span><div class="mini-track"><div class="mini-fill zero"></div></div><span>0%</span></div>
+          </div>
+        </div>
+        <div class="region">
+          <div class="r-name">首部平台</div>
+          <div class="r-count">88 根 · 未开工</div>
+          <div class="mini">
+            <div class="mini-row"><span>装配</span><div class="mini-track"><div class="mini-fill zero"></div></div><span>0%</span></div>
+            <div class="mini-row"><span>外观</span><div class="mini-track"><div class="mini-fill zero"></div></div><span>0%</span></div>
+            <div class="mini-row"><span>试压</span><div class="mini-track"><div class="mini-fill zero"></div></div><span>0%</span></div>
+          </div>
+        </div>
+      </div>
 
-      <!-- 当前大阶段的小阶段 -->
-      <section class="detail" id="detail"></section>
-    </div>
-  </body>
+      <div class="panel">
+        <h3>关键系统（节选）</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>系统</th>
+              <th>说明</th>
+              <th class="num">装配</th>
+              <th class="num">外观</th>
+              <th class="num">试压</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>DD</strong></td>
+              <td>污水 / 排水 · 188 根</td>
+              <td class="num">100%</td>
+              <td class="num">97.3%</td>
+              <td class="num">96.3%</td>
+            </tr>
+            <tr>
+              <td><strong>CA</strong></td>
+              <td>压缩空气 · 488 根</td>
+              <td class="num">97.7%</td>
+              <td class="num">93.0%</td>
+              <td class="num">90.6%</td>
+            </tr>
+            <tr>
+              <td><strong>SF</strong></td>
+              <td>消防 · 144 根</td>
+              <td class="num">91.7%</td>
+              <td class="num">91.7%</td>
+              <td class="num">88.9%</td>
+            </tr>
+            <tr>
+              <td><strong>BW</strong></td>
+              <td>压载水 · 514 根</td>
+              <td class="num">86.4%</td>
+              <td class="num">80.7%</td>
+              <td class="num">72.8%</td>
+            </tr>
+            <tr class="highlight">
+              <td><strong>HC</strong></td>
+              <td>液压 / 高压清洗 · 报验推进中</td>
+              <td class="num">51.4%</td>
+              <td class="num">2.7%</td>
+              <td class="num">0%*</td>
+            </tr>
+            <tr>
+              <td><strong>CH/CO/OX</strong></td>
+              <td>乙炔 / CO₂ / 氧气等</td>
+              <td class="num">0%</td>
+              <td class="num">0%</td>
+              <td class="num">0%</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="margin-top:0.75rem;font-size:0.78rem;color:var(--text-dim)">
+          * HC 试压：追溯总表 05-19 口径为 0%；其后三次 HC 水压报验累计 97 根，签认与回填前不改写总试压完成率。
+        </p>
+      </div>
+    </section>
+
+    <!-- 时间线 + 开放问题 -->
+    <section>
+      <div class="sec-head">
+        <h2>现场节点与开放项</h2>
+      </div>
+      <div class="cols">
+        <div class="panel">
+          <h3>关键节点</h3>
+          <ul class="timeline">
+            <li>
+              <div class="date">2026-05-19</div>
+              <div class="body">
+                <strong>管系追溯总表归档</strong>
+                <p>2,123 根；装配 87.7% / 外观 81.9% / 试压 76.3%。建造全局进度待其他专业补充。</p>
+                <div class="tags"><span class="badge info">管系追溯</span></div>
+              </div>
+            </li>
+            <li>
+              <div class="date">2026-06-12</div>
+              <div class="body">
+                <strong>第一次 HC 水压报验</strong>
+                <p><code>C30-DS-SY-049</code> · 24 根 · 已报验待结果确认。</p>
+                <div class="tags"><span class="badge info">049 · 24 根</span></div>
+              </div>
+            </li>
+            <li>
+              <div class="date">2026-07-01</div>
+              <div class="body">
+                <strong>第二次 HC 水压报验（标准档）</strong>
+                <p><code>C30-DS-SY-065</code> · 38 根 · I 级证书及试验资料；康弘认可有效期 / 壁厚 16 mm 上限等问题待澄清。累计 62 根。</p>
+                <div class="tags"><span class="badge warn">065 · 38 根</span></div>
+              </div>
+            </li>
+            <li>
+              <div class="date">2026-07-14</div>
+              <div class="body">
+                <strong>WPS 审核</strong>
+                <p>I 级确认覆盖（2025002/003）；Ⅲ 级 Φ27×4 暂认 2026008。Excel 与 PDF 仍有差异。</p>
+                <div class="tags"><span class="badge ok">I 级 WPS 覆盖</span></div>
+              </div>
+            </li>
+            <li>
+              <div class="date">2026-07-30</div>
+              <div class="body">
+                <strong>第三次 HC 水压 · 南通现场</strong>
+                <p><code>C30-DS-SY-081</code> · 35 根 I 级 Φ114×17 · 52.5 MPa · Heng Xv Workshop。累计 <strong>97 根</strong>待签认。通达与前批材料混用（约 1/3 + 2/3）。</p>
+                <div class="tags">
+                  <span class="badge live">081 · 35 根</span>
+                  <span class="badge ok">WPS 2025002/003</span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="panel">
+          <h3>开放项（签认前）</h3>
+          <ul class="issue-list">
+            <li class="issue crit">
+              <span class="sev">BLOCK</span>
+              <div>
+                <div class="title">材料混用未拆清</div>
+                <div class="desc">081 批 35 根：约 1/3 通达 + 约 2/3 前证（康弘等）。须船东出管段号 ↔ 炉批 / 厂家 / 质保号对照。</div>
+              </div>
+            </li>
+            <li class="issue warn">
+              <span class="sev">WAIT</span>
+              <div>
+                <div class="title">缺电子版报告</div>
+                <div class="desc">探伤报告、现场试验报告：纸质已见，电子版未到；到后放入 <code>建造_1-10_进行中_2026-07-30/</code> 再分析。</div>
+              </div>
+            </li>
+            <li class="issue warn">
+              <span class="sev">OPEN</span>
+              <div>
+                <div class="title">前批康弘路径遗留</div>
+                <div class="desc">工厂认可过期、认可壁厚 16 mm 上限；通达路径（有效至 2027-11-21、壁厚 2–23）仅覆盖通达段。</div>
+              </div>
+            </li>
+            <li class="issue info">
+              <span class="sev">NOTE</span>
+              <div>
+                <div class="title">NDT 基本未启动</div>
+                <div class="desc">追溯总表约 2,108 条无 NDT 数据；发证关键节点，后续需单独推进。</div>
+              </div>
+            </li>
+            <li class="issue ok">
+              <span class="sev">DONE</span>
+              <div>
+                <div class="title">通达证 + I 级 WPS</div>
+                <div class="desc">通达产品证与工厂认可已归档；WPS-CCS-2025002 / 2025003 覆盖 Φ114×17。</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- HC 报验表 -->
+    <section>
+      <div class="sec-head">
+        <h2>HC 水压报验序列</h2>
+        <span class="hint">三批管段编号无重叠 · 累计 97 根</span>
+      </div>
+      <div class="panel">
+        <table>
+          <thead>
+            <tr>
+              <th>次序</th>
+              <th>报验单号</th>
+              <th>日期</th>
+              <th class="num">数量</th>
+              <th>状态口径</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td><code>C30-DS-SY-049</code></td>
+              <td>2026-06-12</td>
+              <td class="num">24</td>
+              <td>已报验待结果确认</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td><code>C30-DS-SY-065</code></td>
+              <td>2026-07-01</td>
+              <td class="num">38</td>
+              <td>I 级证书材料已收；康弘问题待澄清</td>
+            </tr>
+            <tr class="highlight">
+              <td>3</td>
+              <td><code>C30-DS-SY-081</code></td>
+              <td>2026-07-30</td>
+              <td class="num">35</td>
+              <td>南通现场；混用 + 电子报告未到，不记签认完成</td>
+            </tr>
+            <tr>
+              <td colspan="3"><strong>累计</strong></td>
+              <td class="num"><strong>97</strong></td>
+              <td>材料与签认闭环前不改写总试压 %</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 资料索引 -->
+    <section>
+      <div class="sec-head">
+        <h2>资料索引</h2>
+        <span class="hint">与仓库阶段文件夹对应</span>
+      </div>
+      <div class="archive">
+        <div class="item">
+          <span class="code">05-19</span>
+          <div class="name">
+            建造_1-10_进行中_2026-05-19
+            <small>管系追溯总表与首轮统计 · 2,123 根</small>
+          </div>
+          <span class="n">追溯</span>
+        </div>
+        <div class="item">
+          <span class="code">06-12</span>
+          <div class="name">
+            建造_1-10_进行中_2026-06-12
+            <small>第一次 HC 水压 · C30-DS-SY-049 · 24 根</small>
+          </div>
+          <span class="n">049</span>
+        </div>
+        <div class="item">
+          <span class="code">07-01</span>
+          <div class="name">
+            建造_1-10_进行中_2026-07-01
+            <small>第二次 HC 水压标准档 · C30-DS-SY-065 · 38 根 · I 级证书</small>
+          </div>
+          <span class="n">065</span>
+        </div>
+        <div class="item">
+          <span class="code">07-30</span>
+          <div class="name">
+            建造_1-10_进行中_2026-07-30
+            <small>第三次 HC 水压 · C30-DS-SY-081 · 35 根 · 通达材料 · 现场发现</small>
+          </div>
+          <span class="n">081</span>
+        </div>
+        <div class="item">
+          <span class="code">WPS</span>
+          <div class="name">
+            99-其他 / WPS-审核
+            <small>原件 PDF/Excel、覆盖审核、一致性核对</small>
+          </div>
+          <span class="n">审核</span>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span>依据本地 README 与阶段文件夹整理 · 不编造签认结果</span>
+      <span>看板文件：<code>进度看板.html</code> · 数据截止 2026-07-30</span>
+    </footer>
+  </div>
+</body>
 </html>

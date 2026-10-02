@@ -808,18 +808,33 @@
         <span>·</span>
         <span>SH300KFD26B</span>
         <span class="badge live">建造中 · 1–10</span>
+        <span class="badge ok">场外管系制作已完成 · 10–10</span>
       </div>
       <h1>
         中远海重工 30 万吨浮船坞
-        <span class="sub">项目进度看板 · 数据截至 2026-07-30 南通现场</span>
+        <span class="sub">项目进度看板 · 更新于 2026-10-02 · 最后现场 2026-09-09</span>
       </h1>
       <div class="meta-row">
         <span>船东：<strong>上海中远海运重工有限公司</strong></span>
         <span>当前阶段：<strong>建造</strong></span>
         <span>起始记录：<strong>2026-05-19</strong></span>
-        <span>最新现场：<strong>2026-07-30</strong></span>
+        <span>最后现场：<strong>2026-09-09</strong></span>
       </div>
     </header>
+
+    <section aria-label="场外管系制作完成状态">
+      <div class="panel" style="border-color:var(--ok)">
+        <h3>场外管系制作已全部完成</h3>
+        <div class="meter">
+          <div class="name">制作完成</div>
+          <div class="track"><div class="fill" style="width:100%"></div></div>
+          <div class="pct">100%</div>
+        </div>
+        <p style="margin-top:0.75rem;color:var(--ok);font-family:var(--mono)">██████████ · 10–10</p>
+        <p style="margin-top:0.5rem;font-size:0.84rem;color:var(--text-muted)">最后一次赴南通思英现场：2026-09-09。制作完成状态由项目负责人于 2026-10-02 确认。</p>
+        <p style="margin-top:0.35rem;font-size:0.78rem;color:var(--text-muted)">最新归档为 C30-DS-SY-103；原报验资料标注 2026-09-08，实际到场日期按负责人确认记录为 2026-09-09。</p>
+      </div>
+    </section>
 
     <!-- 全项目阶段 -->
     <section>
@@ -885,10 +900,10 @@
           <div class="note">其他专业数据待补，全局仍记 1–10</div>
         </div>
         <div class="kpi">
-          <div class="k">管系专业</div>
-          <div class="v">8<em>/10</em></div>
-          <div class="bar-row" aria-label="管系进度 8/10">████████░░</div>
-          <div class="note">装配 / 外观 / 试压分项见下</div>
+          <div class="k">场外管系制作</div>
+          <div class="v" style="color:var(--ok)">100<em>%</em></div>
+          <div class="bar-row" style="color:var(--ok)" aria-label="场外管系制作进度 10/10">██████████ · 10–10</div>
+          <div class="note" style="color:var(--text-muted)">全部完成 · 项目负责人确认</div>
         </div>
         <div class="kpi">
           <div class="k">管件总量</div>
@@ -896,18 +911,21 @@
           <div class="note" style="margin-top:0.75rem">21 系统 · 6 区域 · 追溯总表 05-19</div>
         </div>
         <div class="kpi">
-          <div class="k">HC 水压累计报验</div>
-          <div class="v">97<em>根</em></div>
-          <div class="note" style="margin-top:0.75rem">049+065+081 · 待签认闭环</div>
+          <div class="k">水压累计报验（HC + CH）</div>
+          <div class="v">128<em>根</em></div>
+          <div class="note" style="margin-top:0.75rem">049+065+081+103 · HC 126 / CH 2</div>
         </div>
       </div>
     </section>
 
+    <details style="margin-bottom:2.5rem;border:1px solid var(--line);border-radius:var(--radius);padding:1rem 1.2rem">
+      <summary style="cursor:pointer;color:var(--text-muted);font-size:0.9rem">查看 2026-05-19 历史工序、区域及系统统计</summary>
+      <p style="margin:0.8rem 0 1.2rem;font-size:0.82rem;color:var(--text-muted)">以下为首次追溯总表的历史快照；当前场外管系制作已全部完成。各工序、区域与系统的最新逐项统计尚未归档。</p>
     <!-- 管系工序 -->
     <section>
       <div class="sec-head">
-        <h2>管系工序完成率</h2>
-        <span class="hint">来源：2026-05-19 管系追溯状态表 · 材料闭环前不改写总试压 %</span>
+        <h2>历史管系工序完成率 · 2026-05-19</h2>
+        <span class="hint">来源：2026-05-19 管系追溯状态表 · 历史快照</span>
       </div>
       <div class="panel">
         <div class="meter-list">
@@ -937,7 +955,7 @@
     <section>
       <div class="sec-head">
         <h2>区域与关键系统</h2>
-        <span class="hint">坞墙 / 首部平台未开工；HC 工序衔接需关注</span>
+        <span class="hint">2026-05-19 历史状态 · 不代表当前进度</span>
       </div>
       <div class="region-grid" style="margin-bottom:1.25rem">
         <div class="region">
@@ -1039,7 +1057,7 @@
             </tr>
             <tr class="highlight">
               <td><strong>HC</strong></td>
-              <td>液压 / 高压清洗 · 报验推进中</td>
+              <td>液压 / 高压清洗 · 05-19 历史状态</td>
               <td class="num">51.4%</td>
               <td class="num">2.7%</td>
               <td class="num">0%*</td>
@@ -1054,15 +1072,17 @@
           </tbody>
         </table>
         <p style="margin-top:0.75rem;font-size:0.78rem;color:var(--text-dim)">
-          * HC 试压：追溯总表 05-19 口径为 0%；其后三次 HC 水压报验累计 97 根，签认与回填前不改写总试压完成率。
+          * HC 试压 0% 为 05-19 历史统计；其后四批水压报验合计 128 根（HC 126、CH 2）。场外制作完成状态以本页最新确认记录为准。
         </p>
       </div>
     </section>
 
-    <!-- 时间线 + 开放问题 -->
+    </details>
+
+    <!-- 时间线 + 归档状态 -->
     <section>
       <div class="sec-head">
-        <h2>现场节点与开放项</h2>
+        <h2>现场节点与归档状态</h2>
       </div>
       <div class="cols">
         <div class="panel">
@@ -1111,11 +1131,43 @@
                 </div>
               </div>
             </li>
+            <li>
+              <div class="date">2026-09-09</div>
+              <div class="body">
+                <strong>最后一次现场 · 南通思英</strong>
+                <p><code>C30-DS-SY-103</code> · 第四次水压报验资料 · 31 根（HC 29、CH 2）。原资料报验日期为 09-08，实际到场为 09-09；累计报验 128 根。</p>
+                <div class="tags"><span class="badge info">103 · 31 根</span><span class="badge ok">最后现场 09-09</span></div>
+              </div>
+            </li>
+            <li>
+              <div class="date">2026-10-02</div>
+              <div class="body">
+                <strong>场外管系制作全部完成 · 状态确认</strong>
+                <p>项目负责人确认场外管系制作已经全部完成，制作进度更新为 100%（10–10）。</p>
+                <div class="tags"><span class="badge ok">制作完成</span></div>
+              </div>
+            </li>
           </ul>
         </div>
 
         <div class="panel">
-          <h3>开放项（签认前）</h3>
+          <h3>制作与资料归档</h3>
+          <ul class="issue-list" style="margin-bottom:1rem">
+            <li class="issue ok">
+              <span class="sev">DONE</span>
+              <div><div class="title">场外管系制作全部完成</div><div class="desc">100% · ██████████ · 10–10。状态来源：项目负责人 2026-10-02 确认。</div></div>
+            </li>
+            <li class="issue info">
+              <span class="sev">INFO</span>
+              <div><div class="title">最新资料：103 批</div><div class="desc">报验单、材料证书、工厂认可、泵压工装及审核报告已归档。原资料日期 09-08，实际最后现场日期 09-09。</div></div>
+            </li>
+            <li class="issue info">
+              <span class="sev">FILE</span>
+              <div><div class="title">最终签认资料待归档核对</div><div class="desc">当前目录未见最新签认结果、最终追溯总表及完整试验电子报告；已记录制作完成确认，文件归档状态按现有资料保留。</div></div>
+            </li>
+          </ul>
+          <details>
+            <summary style="cursor:pointer;color:var(--text-muted);font-size:0.85rem">查看 07-30 历史审核项（处理结果待归档核对）</summary>
           <ul class="issue-list">
             <li class="issue crit">
               <span class="sev">BLOCK</span>
@@ -1141,8 +1193,8 @@
             <li class="issue info">
               <span class="sev">NOTE</span>
               <div>
-                <div class="title">NDT 基本未启动</div>
-                <div class="desc">追溯总表约 2,108 条无 NDT 数据；发证关键节点，后续需单独推进。</div>
+                <div class="title">05-19 历史 NDT 数据缺项</div>
+                <div class="desc">05-19 追溯总表约 2,108 条无 NDT 数据；属于历史快照，最新数据待归档核对。</div>
               </div>
             </li>
             <li class="issue ok">
@@ -1153,15 +1205,16 @@
               </div>
             </li>
           </ul>
+          </details>
         </div>
       </div>
     </section>
 
-    <!-- HC 报验表 -->
+    <!-- 水压报验表 -->
     <section>
       <div class="sec-head">
-        <h2>HC 水压报验序列</h2>
-        <span class="hint">三批管段编号无重叠 · 累计 97 根</span>
+        <h2>水压报验序列（HC / CH）</h2>
+        <span class="hint">四批管段编号无重叠 · 累计 128 根（HC 126 / CH 2）</span>
       </div>
       <div class="panel">
         <table>
@@ -1196,10 +1249,17 @@
               <td class="num">35</td>
               <td>南通现场；混用 + 电子报告未到，不记签认完成</td>
             </tr>
+            <tr class="highlight">
+              <td>4</td>
+              <td><code>C30-DS-SY-103</code></td>
+              <td>2026-09-09 现场<br><small>原报验日期：09-08</small></td>
+              <td class="num">31</td>
+              <td>HC 29 / CH 2；最后一次现场，签认资料待归档核对</td>
+            </tr>
             <tr>
-              <td colspan="3"><strong>累计</strong></td>
-              <td class="num"><strong>97</strong></td>
-              <td>材料与签认闭环前不改写总试压 %</td>
+              <td colspan="3"><strong>累计报验</strong></td>
+              <td class="num"><strong>128</strong></td>
+              <td>HC 126 / CH 2；制作完成状态已由负责人确认</td>
             </tr>
           </tbody>
         </table>
@@ -1246,6 +1306,14 @@
           <span class="n">081</span>
         </div>
         <div class="item">
+          <span class="code">09-09</span>
+          <div class="name">
+            2026年9月8日 南通思英 场内管系制造
+            <small>原资料目录名称保留 · 实际到场 09-09 · C30-DS-SY-103 · 31 根 · 审核报告及证书</small>
+          </div>
+          <span class="n">103</span>
+        </div>
+        <div class="item">
           <span class="code">WPS</span>
           <div class="name">
             99-其他 / WPS-审核
@@ -1257,8 +1325,8 @@
     </section>
 
     <footer>
-      <span>依据本地 README 与阶段文件夹整理 · 不编造签认结果</span>
-      <span>看板文件：<code>进度看板.html</code> · 数据截止 2026-07-30</span>
+      <span>制作完成与实际现场日期依据项目负责人确认 · 历史统计依据本地归档资料</span>
+      <span>更新于 2026-10-02 · 最后现场 2026-09-09 · 最新资料 C30-DS-SY-103</span>
     </footer>
   </div>
 </body>

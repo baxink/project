@@ -4,845 +4,271 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Projects · 中远海重工30万吨浮船坞 · 项目进度</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <meta name="description" content="中远海重工30万吨浮船坞项目纪要：场外管系制作全部完成，最后现场2026年9月9日。" />
   <style>
-    /* Tokyo Night palette — night / storm hybrid */
     :root {
-      --bg: #1a1b26;
-      --bg-deep: #16161e;
-      --bg-elev: #1f2335;
-      --bg-soft: #24283b;
-      --line: #3b4261;
-      --line-strong: #565f89;
-      --text: #c0caf5;
-      --text-bright: #c0caf5;
-      --text-muted: #a9b1d6;
-      --text-dim: #565f89;
-      --accent: #7aa2f7;          /* blue */
-      --accent-soft: rgba(122, 162, 247, 0.14);
-      --accent-2: #bb9af7;      /* magenta */
-      --accent-2-soft: rgba(187, 154, 247, 0.14);
-      --cyan: #7dcfff;
-      --cyan-soft: rgba(125, 207, 255, 0.12);
-      --teal: #73daca;
-      --ok: #9ece6a;             /* green */
-      --ok-soft: rgba(158, 206, 106, 0.14);
-      --warn: #ff9e64;           /* orange */
-      --warn-soft: rgba(255, 158, 100, 0.14);
-      --crit: #f7768e;           /* red */
-      --crit-soft: rgba(247, 118, 142, 0.14);
-      --info: #7dcfff;           /* cyan */
-      --info-soft: rgba(125, 207, 255, 0.14);
-      --yellow: #e0af68;
-      --steel: #7aa2f7;
-      --radius: 6px;
-      --font: "IBM Plex Sans", "Noto Sans SC", system-ui, sans-serif;
-      --mono: "IBM Plex Mono", ui-monospace, monospace;
-      --glow-blue: 0 0 24px rgba(122, 162, 247, 0.22);
-      --glow-mag: 0 0 20px rgba(187, 154, 247, 0.18);
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: var(--font);
-      background:
-        radial-gradient(1100px 560px at 8% -8%, rgba(122, 162, 247, 0.12), transparent 55%),
-        radial-gradient(900px 520px at 96% 0%, rgba(187, 154, 247, 0.10), transparent 50%),
-        radial-gradient(700px 400px at 50% 100%, rgba(125, 207, 255, 0.05), transparent 55%),
-        linear-gradient(180deg, var(--bg-deep) 0%, var(--bg) 40%, #1a1b26 100%);
-      color: var(--text);
-      line-height: 1.55;
-      min-height: 100vh;
-    }
-
-    /* cyber grid */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0.045;
-      background-image:
-        linear-gradient(90deg, #7aa2f7 1px, transparent 1px),
-        linear-gradient(#bb9af7 1px, transparent 1px);
-      background-size: 40px 40px;
-      z-index: 0;
-      mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, #000 20%, transparent 75%);
-    }
-
-    .wrap {
-      position: relative;
-      z-index: 1;
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 2rem 1.25rem 4rem;
-    }
-
-    /* —— header —— */
-    header.top {
-      display: grid;
-      gap: 1.25rem;
-      margin-bottom: 2.25rem;
-      padding-bottom: 1.75rem;
-      border-bottom: 1px solid var(--line);
-      position: relative;
-    }
-
-    header.top::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -1px;
-      width: min(280px, 40%);
-      height: 2px;
-      background: linear-gradient(90deg, var(--accent), var(--accent-2), transparent);
-      box-shadow: 0 0 12px rgba(122, 162, 247, 0.45);
-    }
-
-    .eyebrow {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem 1rem;
-      align-items: center;
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    .eyebrow .dot {
-      width: 7px; height: 7px;
-      border-radius: 50%;
-      background: var(--cyan);
-      box-shadow:
-        0 0 0 3px var(--cyan-soft),
-        0 0 10px rgba(125, 207, 255, 0.7);
-      animation: pulse-dot 2.4s ease-in-out infinite;
-    }
-
-    @keyframes pulse-dot {
-      0%, 100% { opacity: 1; box-shadow: 0 0 0 3px var(--cyan-soft), 0 0 10px rgba(125, 207, 255, 0.7); }
-      50% { opacity: 0.75; box-shadow: 0 0 0 5px transparent, 0 0 16px rgba(125, 207, 255, 0.35); }
-    }
-
-    h1 {
-      font-size: clamp(1.55rem, 3.5vw, 2.15rem);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      line-height: 1.2;
-      background: linear-gradient(120deg, #c0caf5 0%, #7aa2f7 45%, #bb9af7 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    h1 span.sub {
-      display: block;
-      margin-top: 0.35rem;
-      font-size: 0.95rem;
-      font-weight: 500;
-      color: var(--text-muted);
-      letter-spacing: 0;
-      background: none;
-      -webkit-background-clip: unset;
-      background-clip: unset;
-    }
-
-    .meta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem 1.5rem;
-      font-size: 0.88rem;
-      color: var(--text-muted);
-    }
-
-    .meta-row strong {
-      color: var(--text);
-      font-weight: 600;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      padding: 0.22rem 0.55rem;
-      border-radius: 3px;
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.02em;
-      border: 1px solid transparent;
-    }
-
-    .badge.live {
-      background: var(--warn-soft);
-      color: var(--warn);
-      border-color: rgba(255, 158, 100, 0.4);
-      box-shadow: 0 0 12px rgba(255, 158, 100, 0.12);
-    }
-
-    .badge.ok {
-      background: var(--ok-soft);
-      color: var(--ok);
-      border-color: rgba(158, 206, 106, 0.4);
-    }
-
-    .badge.crit {
-      background: var(--crit-soft);
-      color: var(--crit);
-      border-color: rgba(247, 118, 142, 0.4);
-    }
-
-    .badge.info {
-      background: var(--info-soft);
-      color: var(--cyan);
-      border-color: rgba(125, 207, 255, 0.35);
-    }
-
-    .badge.mag {
-      background: var(--accent-2-soft);
-      color: var(--accent-2);
-      border-color: rgba(187, 154, 247, 0.4);
-    }
-
-    /* —— section chrome —— */
-    section {
-      margin-bottom: 2.5rem;
-    }
-
-    .sec-head {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .sec-head h2 {
-      font-size: 0.78rem;
-      font-weight: 600;
-      font-family: var(--mono);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-    }
-
-    .sec-head h2::before {
-      content: "// ";
-      color: var(--accent-2);
-      opacity: 0.85;
-    }
-
-    .sec-head .hint {
-      font-size: 0.78rem;
-      color: var(--text-dim);
-    }
-
-    /* —— stage rail —— */
-    .stage-rail {
-      display: grid;
-      grid-template-columns: repeat(8, 1fr);
-      gap: 0;
-      position: relative;
-      padding: 0.5rem 0 0.25rem;
-    }
-
-    .stage-rail::before {
-      content: "";
-      position: absolute;
-      left: 6%;
-      right: 6%;
-      top: 1.15rem;
-      height: 2px;
-      background: linear-gradient(90deg,
-        var(--ok) 0%,
-        var(--ok) 37.5%,
-        var(--accent) 37.5%,
-        var(--accent) 50%,
-        var(--line) 50%,
-        var(--line) 100%);
-      z-index: 0;
-      opacity: 0.85;
-      box-shadow: 0 0 10px rgba(158, 206, 106, 0.25);
-    }
-
-    .stage {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      padding: 0 0.15rem;
-    }
-
-    .stage .node {
-      width: 1.15rem;
-      height: 1.15rem;
-      margin: 0 auto 0.55rem;
-      border-radius: 50%;
-      border: 2px solid var(--line-strong);
-      background: var(--bg-deep);
-    }
-
-    .stage.done .node {
-      background: var(--ok);
-      border-color: var(--ok);
-      box-shadow: 0 0 0 3px var(--ok-soft), 0 0 12px rgba(158, 206, 106, 0.45);
-    }
-
-    .stage.current .node {
-      background: var(--accent);
-      border-color: var(--cyan);
-      box-shadow:
-        0 0 0 4px var(--accent-soft),
-        0 0 16px rgba(122, 162, 247, 0.65);
-    }
-
-    .stage.todo .node {
-      background: var(--bg-soft);
-      border-color: var(--line);
-    }
-
-    .stage .label {
-      font-size: 0.72rem;
-      font-weight: 600;
-      color: var(--text-dim);
-    }
-
-    .stage.done .label { color: var(--ok); }
-    .stage.current .label { color: var(--cyan); }
-
-    .stage .idx {
-      display: block;
-      font-family: var(--mono);
-      font-size: 0.62rem;
-      color: var(--text-dim);
-      margin-top: 0.15rem;
-    }
-
-    /* —— KPI strip —— */
-    .kpi-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      background: linear-gradient(135deg, rgba(122, 162, 247, 0.45), rgba(187, 154, 247, 0.35), rgba(125, 207, 255, 0.3));
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--glow-blue);
-    }
-
-    .kpi {
-      background: var(--bg-elev);
-      padding: 1.15rem 1.1rem 1.25rem;
-      position: relative;
-    }
-
-    .kpi::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(160deg, rgba(122, 162, 247, 0.06), transparent 55%);
-      pointer-events: none;
-    }
-
-    .kpi .k {
-      font-size: 0.72rem;
-      color: var(--accent-2);
-      font-family: var(--mono);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      margin-bottom: 0.45rem;
-      position: relative;
-    }
-
-    .kpi .v {
-      font-size: 1.65rem;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      font-variant-numeric: tabular-nums;
-      line-height: 1.1;
-      color: var(--text);
-      position: relative;
-      text-shadow: 0 0 24px rgba(122, 162, 247, 0.25);
-    }
-
-    .kpi .v em {
-      font-style: normal;
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--text-dim);
-      margin-left: 0.25rem;
-    }
-
-    .kpi .bar-row {
-      margin-top: 0.75rem;
-      font-family: var(--mono);
-      font-size: 0.78rem;
-      letter-spacing: 0.04em;
-      color: var(--cyan);
-      text-shadow: 0 0 10px rgba(125, 207, 255, 0.35);
-      position: relative;
-    }
-
-    .kpi .note {
-      margin-top: 0.35rem;
-      font-size: 0.75rem;
-      color: var(--text-dim);
-      position: relative;
-    }
-
-    /* —— progress meters —— */
-    .meter-list {
-      display: grid;
-      gap: 0.85rem;
-    }
-
-    .meter {
-      display: grid;
-      grid-template-columns: 5.5rem 1fr auto;
-      gap: 0.75rem;
-      align-items: center;
-    }
-
-    .meter .name {
-      font-size: 0.88rem;
-      font-weight: 500;
-    }
-
-    .meter .track {
-      height: 8px;
-      background: var(--bg-deep);
-      border: 1px solid var(--line);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-
-    .meter .fill {
-      height: 100%;
-      border-radius: 1px;
-      background: linear-gradient(90deg, #449dab, var(--ok));
-      box-shadow: 0 0 10px rgba(158, 206, 106, 0.45);
-    }
-
-    .meter .fill.warn {
-      background: linear-gradient(90deg, #c0a36e, var(--warn));
-      box-shadow: 0 0 10px rgba(255, 158, 100, 0.4);
-    }
-
-    .meter .fill.accent {
-      background: linear-gradient(90deg, #7aa2f7, var(--cyan));
-      box-shadow: 0 0 10px rgba(122, 162, 247, 0.5);
-    }
-
-    .meter .pct {
-      font-family: var(--mono);
-      font-size: 0.82rem;
-      font-variant-numeric: tabular-nums;
-      color: var(--cyan);
-      min-width: 3.2rem;
-      text-align: right;
-    }
-
-    /* —— two col —— */
-    .cols {
-      display: grid;
-      grid-template-columns: 1.15fr 1fr;
-      gap: 1.25rem;
-    }
-
-    .panel {
-      background: linear-gradient(165deg, rgba(36, 40, 59, 0.95), rgba(26, 27, 38, 0.98));
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 1.15rem 1.2rem 1.25rem;
-      box-shadow: 0 0 0 1px rgba(122, 162, 247, 0.04) inset;
-    }
-
-    .panel h3 {
-      font-size: 0.95rem;
-      font-weight: 600;
-      margin-bottom: 0.9rem;
-      padding-bottom: 0.55rem;
-      border-bottom: 1px solid var(--line);
-      color: var(--text);
-    }
-
-    .panel h3::after {
-      content: "";
-      display: block;
-      width: 2.5rem;
-      height: 2px;
-      margin-top: 0.55rem;
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      border-radius: 1px;
-    }
-
-    /* —— tables —— */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.84rem;
-    }
-
-    th, td {
-      text-align: left;
-      padding: 0.5rem 0.4rem;
-      border-bottom: 1px solid var(--line);
-      vertical-align: top;
-    }
-
-    th {
-      font-family: var(--mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--text-dim);
-      font-weight: 500;
-    }
-
-    td.num {
-      font-family: var(--mono);
-      font-variant-numeric: tabular-nums;
-      text-align: right;
-    }
-
-    tr:last-child th,
-    tr:last-child td { border-bottom: none; }
-
-    tr.highlight td {
-      background: linear-gradient(90deg, rgba(122, 162, 247, 0.12), rgba(187, 154, 247, 0.08));
-    }
-
-    code {
-      font-family: var(--mono);
-      font-size: 0.86em;
-      color: var(--cyan);
-      background: rgba(125, 207, 255, 0.08);
-      padding: 0.05em 0.35em;
-      border-radius: 3px;
-      border: 1px solid rgba(125, 207, 255, 0.15);
-    }
-
-    /* —— timeline —— */
-    .timeline {
-      list-style: none;
-      display: grid;
-      gap: 0;
-    }
-
-    .timeline li {
-      display: grid;
-      grid-template-columns: 6.5rem 1fr;
-      gap: 1rem;
-      padding: 0.85rem 0;
-      border-bottom: 1px solid var(--line);
-      position: relative;
-    }
-
-    .timeline li:last-child { border-bottom: none; }
-
-    .timeline .date {
-      font-family: var(--mono);
-      font-size: 0.78rem;
-      color: var(--accent-2);
-      padding-top: 0.1rem;
-      text-shadow: 0 0 12px rgba(187, 154, 247, 0.3);
-    }
-
-    .timeline .body strong {
-      display: block;
-      font-size: 0.92rem;
-      margin-bottom: 0.25rem;
-    }
-
-    .timeline .body p {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-    }
-
-    .timeline .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem;
-      margin-top: 0.45rem;
-    }
-
-    /* —— issues —— */
-    .issue-list {
-      list-style: none;
-      display: grid;
-      gap: 0.65rem;
-    }
-
-    .issue {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 0.75rem;
-      padding: 0.75rem 0.85rem;
-      background: var(--bg-soft);
-      border-left: 3px solid var(--line-strong);
-      border-radius: 0 var(--radius) var(--radius) 0;
-    }
-
-    .issue.crit { border-left-color: var(--crit); }
-    .issue.warn { border-left-color: var(--warn); }
-    .issue.ok { border-left-color: var(--ok); }
-    .issue.info { border-left-color: var(--info); }
-
-    .issue .sev {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.04em;
-      padding-top: 0.2rem;
-      color: var(--text-dim);
-      white-space: nowrap;
-    }
-
-    .issue.crit .sev { color: var(--crit); }
-    .issue.warn .sev { color: var(--warn); }
-    .issue.ok .sev { color: var(--ok); }
-    .issue.info .sev { color: var(--cyan); }
-
-    .issue.crit { background: linear-gradient(90deg, rgba(247, 118, 142, 0.1), var(--bg-soft)); }
-    .issue.warn { background: linear-gradient(90deg, rgba(255, 158, 100, 0.1), var(--bg-soft)); }
-    .issue.ok { background: linear-gradient(90deg, rgba(158, 206, 106, 0.1), var(--bg-soft)); }
-    .issue.info { background: linear-gradient(90deg, rgba(125, 207, 255, 0.08), var(--bg-soft)); }
-
-    .issue .title {
-      font-size: 0.9rem;
-      font-weight: 600;
-      margin-bottom: 0.2rem;
-    }
-
-    .issue .desc {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-
-    /* —— region matrix —— */
-    .region-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0.65rem;
-    }
-
-    .region {
-      padding: 0.85rem 0.9rem;
-      background: linear-gradient(160deg, rgba(36, 40, 59, 0.9), rgba(26, 27, 38, 0.95));
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      transition: border-color 0.15s, box-shadow 0.15s;
-    }
-
-    .region:hover {
-      border-color: rgba(122, 162, 247, 0.45);
-      box-shadow: 0 0 18px rgba(122, 162, 247, 0.12);
-    }
-
-    .region .r-name {
-      font-weight: 600;
-      font-size: 0.88rem;
-      margin-bottom: 0.15rem;
-      color: var(--text);
-    }
-
-    .region .r-count {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      color: var(--accent-2);
-      margin-bottom: 0.55rem;
-    }
-
-    .region .mini {
-      display: grid;
-      gap: 0.35rem;
-      font-size: 0.75rem;
-    }
-
-    .region .mini-row {
-      display: grid;
-      grid-template-columns: 2.2rem 1fr 2.4rem;
-      gap: 0.4rem;
-      align-items: center;
-      color: var(--text-muted);
-    }
-
-    .region .mini-track {
-      height: 4px;
-      background: var(--bg);
-      border-radius: 1px;
-      overflow: hidden;
-    }
-
-    .region .mini-fill {
-      height: 100%;
-      background: linear-gradient(90deg, #449dab, var(--ok));
-      box-shadow: 0 0 6px rgba(158, 206, 106, 0.35);
-    }
-
-    .region .mini-fill.zero { background: var(--line); width: 0 !important; box-shadow: none; }
-    .region .mini-fill.low {
-      background: linear-gradient(90deg, #c0a36e, var(--warn));
-      box-shadow: 0 0 6px rgba(255, 158, 100, 0.35);
-    }
-
-    .region .mini-row span:last-child {
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      text-align: right;
-    }
-
-    /* —— archive index —— */
-    .archive {
-      display: grid;
-      gap: 0.5rem;
-    }
-
-    .archive a,
-    .archive .item {
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      gap: 0.75rem;
-      align-items: center;
-      padding: 0.7rem 0.85rem;
-      background: linear-gradient(120deg, rgba(31, 35, 53, 0.95), rgba(26, 27, 38, 0.98));
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      text-decoration: none;
-      color: inherit;
-      transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
-    }
-
-    .archive .item:hover {
-      border-color: rgba(122, 162, 247, 0.5);
-      background: var(--bg-soft);
-      box-shadow: 0 0 16px rgba(122, 162, 247, 0.12);
-    }
-
-    .archive .code {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      color: var(--cyan);
-      white-space: nowrap;
-      text-shadow: 0 0 8px rgba(125, 207, 255, 0.35);
-    }
-
-    .archive .name {
-      font-size: 0.88rem;
-    }
-
-    .archive .name small {
-      display: block;
-      color: var(--text-dim);
-      font-size: 0.75rem;
-      margin-top: 0.1rem;
-    }
-
-    .archive .n {
-      font-family: var(--mono);
-      font-size: 0.78rem;
-      color: var(--text-muted);
-    }
-
-    /* —— footer —— */
-    footer {
-      margin-top: 2rem;
-      padding-top: 1.25rem;
-      border-top: 1px solid var(--line);
-      font-size: 0.75rem;
-      color: var(--text-dim);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem 1.5rem;
-      justify-content: space-between;
-    }
-
-    footer code {
-      font-family: var(--mono);
-      color: var(--accent);
-      background: none;
-      border: none;
-      padding: 0;
-    }
-
-    /* —— responsive —— */
-    @media (max-width: 900px) {
-      .kpi-grid { grid-template-columns: repeat(2, 1fr); }
-      .cols { grid-template-columns: 1fr; }
-      .region-grid { grid-template-columns: repeat(2, 1fr); }
-      .stage-rail { grid-template-columns: repeat(4, 1fr); gap: 1rem 0; }
-      .stage-rail::before { display: none; }
-    }
-
-    @media (max-width: 520px) {
-      .kpi-grid { grid-template-columns: 1fr; }
-      .region-grid { grid-template-columns: 1fr; }
-      .meter { grid-template-columns: 4rem 1fr auto; }
-      .timeline li { grid-template-columns: 1fr; gap: 0.25rem; }
-      .archive .item { grid-template-columns: 1fr; }
-    }
-
+      --paper:#faf9f6; --ink:#191919; --text:#262626; --text-muted:#62615d;
+      --text-dim:#6c6b66; --line:#d8d6d0; --line-strong:#aaa79f;
+      --accent:#202020; --accent-2:#62615d; --cyan:#252525; --ok:#355747;
+      --warn:#735532; --crit:#74443f; --info:#3e545d; --radius:0;
+      --serif:"Noto Serif SC","Songti SC","STSong","SimSun",Georgia,serif;
+      --font:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+      --mono:"SFMono-Regular",Consolas,monospace;
+    }
+    * {box-sizing:border-box; margin:0; padding:0}
+    html {scroll-behavior:smooth; scroll-padding-top:24px}
+    body {background:var(--paper); color:var(--text); font-family:var(--font); font-size:15px; line-height:1.75; -webkit-font-smoothing:antialiased}
+    a {color:inherit; text-decoration:none}
+    a:hover {text-decoration:underline; text-underline-offset:5px}
+    a:focus-visible, summary:focus-visible {outline:2px solid var(--ink); outline-offset:5px}
+    .wrap {max-width:1240px; margin:0 auto; padding:0 40px 32px}
+    .edition {display:flex; justify-content:space-between; gap:16px; padding:13px 0 10px; font-size:11px; letter-spacing:.07em; border-bottom:1px solid var(--line)}
+    .edition strong {font-weight:600; color:var(--ink)}
+    .masthead {text-align:center; padding:25px 0 19px}
+    .masthead .en {font-family:Georgia,"Times New Roman",serif; font-size:14px; font-style:italic; letter-spacing:.03em; color:var(--text-muted)}
+    .masthead .name {font-family:var(--serif); font-size:clamp(28px,4vw,48px); font-weight:900; letter-spacing:.10em; line-height:1.25; margin-bottom:7px; color:var(--ink)}
+    .masthead .motto {font-family:var(--serif); font-size:12px; letter-spacing:.16em; color:var(--text-muted); margin-top:8px}
+    .paper-nav {display:flex; justify-content:center; align-items:center; flex-wrap:wrap; gap:0; border-top:3px solid var(--ink); border-bottom:1px solid var(--ink); padding:9px 0; font-size:12px}
+    .paper-nav a {padding:0 24px; border-right:1px solid var(--line)}
+    .paper-nav a:last-child {border:0}
+    .lead {display:grid; grid-template-columns:minmax(0,1fr) 250px; gap:54px; padding:34px 0 32px; border-bottom:1px solid var(--ink)}
+    .eyebrow {font-size:11px; letter-spacing:.12em; font-weight:700; color:var(--text-muted); margin-bottom:14px}
+    h1 {font-family:var(--serif); font-weight:900; font-size:clamp(34px,4.8vw,59px); letter-spacing:-.02em; line-height:1.25; color:var(--ink); margin-bottom:18px}
+    .lead .deck {font-family:var(--serif); font-size:17px; color:#4f4e4a; line-height:1.85; max-width:680px; margin-bottom:19px}
+    .byline {display:flex; flex-wrap:wrap; gap:6px 20px; font-size:11px; color:var(--text-muted)}
+    .lead-side {border-left:1px solid var(--line); padding-left:30px; display:flex; flex-direction:column; justify-content:center}
+    .status-label {font-size:12px; font-weight:600; color:var(--ok); display:flex; gap:8px; align-items:center}
+    .status-label::before {content:""; width:6px; height:6px; border-radius:50%; background:var(--ok)}
+    .completion {font-family:Georgia,"Times New Roman",serif; font-size:82px; font-weight:400; line-height:1.1; letter-spacing:-.06em; color:var(--ink); margin:8px 0 12px; font-variant-numeric:tabular-nums}
+    .completion span {font-size:30px; letter-spacing:0; margin-left:5px}
+    .progress-line {height:4px; background:var(--line); margin-bottom:9px}
+    .progress-line span {display:block; height:100%; width:100%; background:var(--ok)}
+    .progress-steps {font-size:10px; color:var(--text-muted); letter-spacing:.05em}
+    .side-date {margin-top:19px; border-top:1px solid var(--line); padding-top:14px; font-size:11px; color:var(--text-muted)}
+    .side-date strong {display:block; color:var(--ink); font-family:Georgia,serif; font-size:24px; font-weight:400; margin-top:3px; letter-spacing:.02em}
+    .side-note {font-size:10px; line-height:1.7; color:var(--text-muted); margin-top:9px}
+    section {margin-bottom:32px}
+    .sec-head {display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:8px 20px; border-top:2px solid var(--ink); padding-top:12px; margin-bottom:17px}
+    .sec-head h2 {font-family:var(--serif); font-size:22px; font-weight:800; color:var(--ink); line-height:1.4}
+    .sec-head .hint {font-size:11px; color:var(--text-muted)}
+    .facts {display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); border-bottom:1px solid var(--line); padding:24px 0; margin-bottom:26px}
+    .fact {padding:0 24px; border-right:1px solid var(--line)}
+    .fact:first-child {padding-left:0}
+    .fact:last-child {border-right:0; padding-right:0}
+    .fact .k {font-size:11px; color:var(--text-muted); margin-bottom:5px}
+    .fact .v {font-family:Georgia,"Times New Roman",serif; font-size:37px; line-height:1.3; letter-spacing:-.02em; color:var(--ink); font-variant-numeric:tabular-nums}
+    .fact .v em {font-family:var(--font); font-style:normal; font-size:11px; font-weight:400; margin-left:6px; color:var(--text-muted)}
+    .fact .note {font-size:10px; color:var(--text-muted); margin-top:5px; line-height:1.65}
+    .stage-section {margin:0 0 34px}
+    .stage-title {font-size:10px; color:var(--text-muted); letter-spacing:.1em; margin-bottom:10px}
+    .stage-rail {display:grid; grid-template-columns:repeat(8,1fr); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+    .stage {padding:10px 8px; text-align:center; color:#7b7973; border-right:1px solid var(--line)}
+    .stage:last-child {border-right:0}
+    .stage .node {display:none}
+    .stage .label {font-size:12px; font-weight:500}
+    .stage .idx {display:block; font-size:9px; margin-top:2px; letter-spacing:.04em}
+    .stage.current {background:var(--ink); color:var(--paper)}
+    .stage.done {color:var(--text)}
+    .cols {display:grid; grid-template-columns:1.65fr 1fr; gap:34px}
+    .cols>.panel+ .panel {border-left:1px solid var(--line); padding-left:28px}
+    .panel {background:transparent; border:0; border-radius:0; padding:0; box-shadow:none; min-width:0}
+    .panel h3 {font-family:var(--serif); font-size:19px; font-weight:700; margin-bottom:14px; color:var(--ink)}
+    .timeline {list-style:none}
+    .timeline li {display:grid; grid-template-columns:83px minmax(0,1fr); gap:20px; padding:16px 0; border-bottom:1px solid var(--line)}
+    .timeline li:first-child {padding-top:0}
+    .timeline li:last-child {border-bottom:0; padding-bottom:0}
+    .timeline .date {font-family:Georgia,serif; font-size:12px; color:var(--text-muted); padding-top:3px; white-space:nowrap}
+    .timeline .body strong {display:block; font-family:var(--serif); font-size:17px; color:var(--ink); line-height:1.55; margin-bottom:5px}
+    .timeline .body p {font-size:12px; color:var(--text-muted); line-height:1.85}
+    .timeline .body p strong {display:inline; font-family:inherit; font-size:inherit; margin:0}
+    .tags {display:flex; flex-wrap:wrap; gap:5px; margin-top:7px}
+    .badge {display:inline-block; font-size:9px; color:#55544f; border:1px solid var(--line); padding:1px 6px; font-weight:400; border-radius:0; line-height:1.8}
+    .badge.ok {color:var(--ok); border-color:#bdc9c0}
+    .badge.crit,.badge.warn,.badge.live,.badge.info,.badge.mag {color:#55544f; background:none}
+    .issue-list {list-style:none}
+    .issue {display:block; border-top:1px solid var(--line); padding:14px 0; background:none; border-left:0; border-radius:0}
+    .issue:first-child {border-top:0; padding-top:0}
+    .issue .sev {display:none}
+    .issue .title {font-family:var(--serif); font-size:16px; font-weight:700; color:var(--ink); line-height:1.5; margin-bottom:5px}
+    .issue .desc {font-size:12px; color:var(--text-muted); line-height:1.85}
+    details {border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:14px 0; margin-bottom:30px; border-radius:0}
+    summary {cursor:pointer; font-size:12px; font-weight:500; color:var(--text); line-height:1.8}
+    details[open] summary {margin-bottom:18px}
+    details>p {font-size:12px; color:var(--text-muted)}
+    details .sec-head {border-top:0; padding-top:0}
+    .panel details {margin:20px 0 0; font-size:12px}
+    .panel details .issue {padding:13px 0}
+    .table-wrap {overflow-x:auto}
+    table {width:100%; border-collapse:collapse; font-size:12px}
+    th,td {text-align:left; padding:12px 10px; border-bottom:1px solid var(--line); vertical-align:top; line-height:1.7}
+    th {font-size:10px; color:var(--text-muted); font-weight:500; border-bottom:1px solid var(--ink); padding-top:0; padding-bottom:10px; white-space:nowrap}
+    th:first-child,td:first-child {padding-left:0}
+    th:last-child,td:last-child {padding-right:0}
+    td.num,th.num {text-align:right; font-variant-numeric:tabular-nums}
+    tr.highlight td {background:#efeee8}
+    tr:last-child td {border-bottom:0}
+    table small {font-size:10px; color:var(--text-muted)}
+    code {font-family:var(--mono); font-size:.9em; background:none; border:0; padding:0; color:var(--text)}
+    .archive {display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); column-gap:36px}
+    .archive .item {display:grid; grid-template-columns:47px minmax(0,1fr) auto; gap:12px; align-items:baseline; border-bottom:1px solid var(--line); padding:15px 0; background:none}
+    .archive .code {font-family:Georgia,serif; font-size:12px; color:var(--text-muted); white-space:nowrap}
+    .archive .name {font-size:12px; overflow-wrap:anywhere; line-height:1.65}
+    .archive .name small {display:block; font-size:10px; color:var(--text-muted); margin-top:4px}
+    .archive .n {font-family:var(--mono); font-size:10px; color:var(--text-muted)}
+    .meter-list {display:grid; gap:13px}
+    .meter {display:grid; grid-template-columns:70px minmax(0,1fr) 55px; gap:14px; align-items:center}
+    .meter .name {font-size:12px}
+    .track {height:5px; background:#e6e4df}
+    .fill {height:100%; background:#4e5550}
+    .pct {font-family:Georgia,serif; font-size:13px; text-align:right; color:var(--text-muted)}
+    .region-grid {display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px}
+    .region {border-top:1px solid var(--line); padding-top:12px}
+    .r-name {font-family:var(--serif); font-weight:700; font-size:16px}
+    .r-count {font-size:10px; color:var(--text-muted); margin:2px 0 10px}
+    .mini {display:grid; gap:6px}
+    .mini-row {display:grid; grid-template-columns:28px minmax(0,1fr) 40px; gap:8px; align-items:center; font-size:10px; color:var(--text-muted)}
+    .mini-row span:last-child {text-align:right}
+    .mini-track {height:3px; background:#e6e4df}
+    .mini-fill {height:100%; background:#575b56}
+    .mini-fill.zero {width:0}
+    footer {display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px 24px; border-top:3px solid var(--ink); margin-top:42px; padding-top:14px; color:var(--text-muted); font-size:10px; line-height:1.8}
+    .footer-brand {font-family:var(--serif); font-size:15px; font-weight:700; color:var(--ink)}
+    @media (max-width:900px) {
+      .wrap {padding:0 24px 28px}
+      .lead {grid-template-columns:minmax(0,1fr) 210px; gap:28px}
+      .lead-side {padding-left:24px}
+      .completion {font-size:68px}
+      .cols {grid-template-columns:1.3fr 1fr; gap:24px}
+      .cols>.panel+.panel {padding-left:22px}
+      .fact {padding:0 17px}
+      .fact .v {font-size:31px}
+      .region-grid {grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+    @media (max-width:620px) {
+      .wrap {padding:0 20px 24px}
+      .edition {font-size:9px; gap:8px}
+      .edition .edition-extra {display:none}
+      .masthead {padding:23px 0 17px}
+      .masthead .name {font-size:29px; letter-spacing:.07em}
+      .masthead .en {font-size:12px}
+      .masthead .motto {font-size:10px; letter-spacing:.11em}
+      .paper-nav {font-size:10px; padding:8px 0}
+      .paper-nav a {padding:0 10px}
+      .paper-nav a:last-child {display:none}
+      .paper-nav a:nth-last-child(2) {border:0}
+      .lead {grid-template-columns:1fr; gap:22px; padding:25px 0 23px}
+      h1 {font-size:38px; margin-bottom:14px; line-height:1.25}
+      .eyebrow {font-size:10px; margin-bottom:12px}
+      .lead .deck {font-size:14px; line-height:1.85; margin-bottom:13px}
+      .byline {font-size:10px; gap:5px 14px}
+      .lead-side {border-left:0; border-top:1px solid var(--line); padding:18px 0 0; display:grid; grid-template-columns:1fr 1fr; gap:18px; align-items:center}
+      .completion {font-size:56px; margin:5px 0 9px}
+      .completion span {font-size:21px}
+      .status-label {font-size:10px}
+      .progress-steps {font-size:8px; letter-spacing:0}
+      .side-date {margin:0; padding:0; border:0; font-size:10px}
+      .side-date strong {font-size:21px; margin-top:5px}
+      .side-note {font-size:9px; margin-top:6px}
+      .facts {grid-template-columns:repeat(2,minmax(0,1fr)); padding:18px 0; gap:16px 0; margin-bottom:21px}
+      .fact {padding:0 16px}
+      .fact:nth-child(odd) {padding-left:0}
+      .fact:nth-child(even) {border-right:0; padding-right:0}
+      .fact .v {font-size:30px}
+      .fact .k,.fact .note {font-size:9px}
+      .stage-rail {grid-template-columns:repeat(4,1fr)}
+      .stage {padding:7px 5px}
+      .stage:nth-child(4) {border-right:0}
+      .stage:nth-child(-n+4) {border-bottom:1px solid var(--line)}
+      .stage .label {font-size:11px}
+      .stage .idx {font-size:8px}
+      .stage-section {margin-bottom:27px}
+      .sec-head {padding-top:10px; margin-bottom:17px}
+      .sec-head h2 {font-size:20px}
+      .sec-head .hint {font-size:10px}
+      .cols {grid-template-columns:1fr; gap:26px}
+      .cols>.panel+.panel {border-left:0; padding-left:0; padding-top:22px; border-top:1px solid var(--line)}
+      .timeline li {grid-template-columns:73px minmax(0,1fr); gap:13px; padding:14px 0}
+      .timeline .date {font-size:10px}
+      .timeline .body strong {font-size:15px}
+      .timeline .body p {font-size:11px}
+      .archive {grid-template-columns:1fr}
+      .archive .name {font-size:11px}
+      .archive .name small {font-size:9px}
+      table {font-size:10px; min-width:500px}
+      th,td {padding:10px 8px}
+      th {font-size:9px}
+      .region-grid {grid-template-columns:1fr}
+      footer {margin-top:30px; font-size:9px}
+    }
+    @media (prefers-reduced-motion:reduce) {html {scroll-behavior:auto}}
     @media print {
-      body { background: #fff; color: #111; }
-      body::before { display: none; }
-      .panel, .kpi, .region, .archive .item {
-        background: #fff;
-        border-color: #ccc;
-      }
-      .badge, .issue { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+      body {background:white; color:black}
+      .wrap {max-width:none; padding:0}
+      .paper-nav {display:none}
+      .lead {break-inside:avoid}
+      .facts {break-inside:avoid}
+      .stage.current {background:#ddd; color:black}
+      .panel,.timeline li,.archive .item {break-inside:avoid}
+      .badge {border-color:#999}
+      a {text-decoration:none}
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header class="top">
-      <div class="eyebrow">
-        <span class="dot" aria-hidden="true"></span>
-        <span>COSCO SHIPPING Heavy Industry</span>
-        <span>·</span>
+  <main class="wrap">
+    <header>
+      <div class="edition">
+        <span><strong>2026年10月2日</strong> · 星期五</span>
+        <span class="edition-extra">工程记录 / 建造专刊</span>
         <span>SH300KFD26B</span>
-        <span class="badge live">建造中 · 1–10</span>
-        <span class="badge ok">场外管系制作已完成 · 10–10</span>
       </div>
-      <h1>
-        中远海重工 30 万吨浮船坞
-        <span class="sub">项目进度看板 · 更新于 2026-10-02 · 最后现场 2026-09-09</span>
-      </h1>
-      <div class="meta-row">
-        <span>船东：<strong>上海中远海运重工有限公司</strong></span>
-        <span>当前阶段：<strong>建造</strong></span>
-        <span>起始记录：<strong>2026-05-19</strong></span>
-        <span>最后现场：<strong>2026-09-09</strong></span>
+      <div class="masthead">
+        <div class="name">浮船坞工程纪要</div>
+        <div class="en">The Dockyard Journal</div>
+        <div class="motto">中远海重工 · 30 万吨浮船坞</div>
       </div>
+      <nav class="paper-nav" aria-label="看板栏目">
+        <a href="#overview">完成概览</a>
+        <a href="#milestones">现场纪要</a>
+        <a href="#inspections">报验台账</a>
+        <a href="#archives">资料归档</a>
+        <a href="#history">历史数据</a>
+      </nav>
     </header>
 
-    <section aria-label="场外管系制作完成状态">
-      <div class="panel" style="border-color:var(--ok)">
-        <h3>场外管系制作已全部完成</h3>
-        <div class="meter">
-          <div class="name">制作完成</div>
-          <div class="track"><div class="fill" style="width:100%"></div></div>
-          <div class="pct">100%</div>
+    <section class="lead" id="overview" aria-label="场外管系制作完成状态">
+      <article>
+        <div class="eyebrow">建造现场 / 最新进展</div>
+        <h1>场外管系制作<br>已全部完成</h1>
+        <p class="deck">中远海重工30万吨浮船坞场外管系制作现已全部完成。最后一次赴南通思英现场为9月9日，最新归档为第四批水压报验资料。</p>
+        <div class="byline">
+          <span>船东 · 上海中远海运重工有限公司</span>
+          <span>状态确认 · 2026年10月2日</span>
         </div>
-        <p style="margin-top:0.75rem;color:var(--ok);font-family:var(--mono)">██████████ · 10–10</p>
-        <p style="margin-top:0.5rem;font-size:0.84rem;color:var(--text-muted)">最后一次赴南通思英现场：2026-09-09。制作完成状态由项目负责人于 2026-10-02 确认。</p>
-        <p style="margin-top:0.35rem;font-size:0.78rem;color:var(--text-muted)">最新归档为 C30-DS-SY-103；原报验资料标注 2026-09-08，实际到场日期按负责人确认记录为 2026-09-09。</p>
-      </div>
+      </article>
+      <aside class="lead-side" aria-label="完成状态摘要">
+        <div>
+          <div class="status-label">场外制作 · 全部完成</div>
+          <div class="completion">100<span>%</span></div>
+          <div class="progress-line" role="progressbar" aria-label="场外管系制作完成率" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"><span></span></div>
+          <div class="progress-steps">██████████ &nbsp; 10–10</div>
+        </div>
+        <div class="side-date">最后一次现场<strong>2026.09.09</strong>
+          <p class="side-note">南通思英 · C30-DS-SY-103<br>原报验资料日期为9月8日，实际到场为9月9日。</p>
+        </div>
+      </aside>
     </section>
 
-    <!-- 全项目阶段 -->
-    <section>
-      <div class="sec-head">
-        <h2>项目阶段</h2>
-        <span class="hint">合同 → 设计 → 审图 → 建造 → 系泊 → 试航 → 发证 → 交船</span>
-      </div>
-      <div class="stage-rail" role="list" aria-label="项目八阶段">
+    <div class="facts" aria-label="项目关键数据">
+      <div class="fact"><div class="k">水压累计报验</div><div class="v">128<em>根</em></div><div class="note">共四批 · HC 126 / CH 2</div></div>
+      <div class="fact"><div class="k">最后一批报验</div><div class="v">31<em>根</em></div><div class="note">103批 · HC 29 / CH 2</div></div>
+      <div class="fact"><div class="k">追溯总表管件量</div><div class="v">2,123<em>根</em></div><div class="note">21系统 · 6区域 · 05-19归档</div></div>
+      <div class="fact"><div class="k">建造全局 · 原记录</div><div class="v">1<em>/ 10</em></div><div class="note">█░░░░░░░░░ · 1–10<br>其他专业进度待补</div></div>
+    </div>
+
+    <section class="stage-section" aria-label="项目阶段">
+      <div class="stage-title">项目阶段 / 当前处于建造</div>
+<div class="stage-rail" role="list" aria-label="项目八阶段">
         <div class="stage done" role="listitem">
           <div class="node"></div>
           <div class="label">合同</div>
@@ -886,41 +312,197 @@
       </div>
     </section>
 
-    <!-- KPI -->
-    <section>
+    <!-- 时间线 + 归档状态 -->
+    <section id="milestones">
       <div class="sec-head">
-        <h2>进度总览</h2>
-        <span class="hint">进度同时保留 █/░ 条与 N–M 步数</span>
+        <h2>现场纪要</h2>
+        <span class="hint">从最近一次记录回看项目进展</span>
       </div>
-      <div class="kpi-grid">
-        <div class="kpi">
-          <div class="k">建造全局</div>
-          <div class="v">1<em>/10</em></div>
-          <div class="bar-row" aria-label="建造进度 1/10">█░░░░░░░░░</div>
-          <div class="note">其他专业数据待补，全局仍记 1–10</div>
+      <div class="cols">
+        <div class="panel">
+          <h3>现场与制作记录</h3>
+          <ul class="timeline">
+            <li>
+              <div class="date">2026-10-02</div>
+              <div class="body">
+                <strong>场外管系制作全部完成 · 状态确认</strong>
+                <p>项目负责人确认场外管系制作已经全部完成，制作进度更新为 100%（10–10）。</p>
+                <div class="tags"><span class="badge ok">制作完成</span></div>
+              </div>
+            </li>
+            <li>
+              <div class="date">2026-09-09</div>
+              <div class="body">
+                <strong>最后一次现场 · 南通思英</strong>
+                <p><code>C30-DS-SY-103</code> · 第四次水压报验资料 · 31 根（HC 29、CH 2）。原资料报验日期为 09-08，实际到场为 09-09；累计报验 128 根。</p>
+                <div class="tags"><span class="badge info">103 · 31 根</span><span class="badge ok">最后现场 09-09</span></div>
+              </div>
+            </li>
+            <li>
+              <div class="date">2026-07-30</div>
+              <div class="body">
+                <strong>第三次 HC 水压 · 南通现场</strong>
+                <p><code>C30-DS-SY-081</code> · 35 根 I 级 Φ114×17 · 52.5 MPa · Heng Xv Workshop。累计 <strong>97 根</strong>待签认。通达与前批材料混用（约 1/3 + 2/3）。</p>
+                <div class="tags">
+                  <span class="badge live">081 · 35 根</span>
+                  <span class="badge ok">WPS 2025002/003</span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="date">2026-07-14</div>
+              <div class="body">
+                <strong>WPS 审核</strong>
+                <p>I 级确认覆盖（2025002/003）；Ⅲ 级 Φ27×4 暂认 2026008。Excel 与 PDF 仍有差异。</p>
+                <div class="tags"><span class="badge ok">I 级 WPS 覆盖</span></div>
+              </div>
+            </li>
+            <li>
+              <div class="date">2026-07-01</div>
+              <div class="body">
+                <strong>第二次 HC 水压报验（标准档）</strong>
+                <p><code>C30-DS-SY-065</code> · 38 根 · I 级证书及试验资料；康弘认可有效期 / 壁厚 16 mm 上限等问题待澄清。累计 62 根。</p>
+                <div class="tags"><span class="badge warn">065 · 38 根</span></div>
+              </div>
+            </li>
+            <li>
+              <div class="date">2026-06-12</div>
+              <div class="body">
+                <strong>第一次 HC 水压报验</strong>
+                <p><code>C30-DS-SY-049</code> · 24 根 · 已报验待结果确认。</p>
+                <div class="tags"><span class="badge info">049 · 24 根</span></div>
+              </div>
+            </li>
+            <li>
+              <div class="date">2026-05-19</div>
+              <div class="body">
+                <strong>管系追溯总表归档</strong>
+                <p>2,123 根；装配 87.7% / 外观 81.9% / 试压 76.3%。建造全局进度待其他专业补充。</p>
+                <div class="tags"><span class="badge info">管系追溯</span></div>
+              </div>
+            </li>
+          </ul>
         </div>
-        <div class="kpi">
-          <div class="k">场外管系制作</div>
-          <div class="v" style="color:var(--ok)">100<em>%</em></div>
-          <div class="bar-row" style="color:var(--ok)" aria-label="场外管系制作进度 10/10">██████████ · 10–10</div>
-          <div class="note" style="color:var(--text-muted)">全部完成 · 项目负责人确认</div>
-        </div>
-        <div class="kpi">
-          <div class="k">管件总量</div>
-          <div class="v">2,123<em>根</em></div>
-          <div class="note" style="margin-top:0.75rem">21 系统 · 6 区域 · 追溯总表 05-19</div>
-        </div>
-        <div class="kpi">
-          <div class="k">水压累计报验（HC + CH）</div>
-          <div class="v">128<em>根</em></div>
-          <div class="note" style="margin-top:0.75rem">049+065+081+103 · HC 126 / CH 2</div>
+
+        <div class="panel">
+          <h3>资料纪要</h3>
+          <ul class="issue-list">
+            <li class="issue ok">
+              <span class="sev">DONE</span>
+              <div><div class="title">场外管系制作全部完成</div><div class="desc">100% · ██████████ · 10–10。状态来源：项目负责人 2026-10-02 确认。</div></div>
+            </li>
+            <li class="issue info">
+              <span class="sev">INFO</span>
+              <div><div class="title">最新资料：103 批</div><div class="desc">报验单、材料证书、工厂认可、泵压工装及审核报告已归档。原资料日期 09-08，实际最后现场日期 09-09。</div></div>
+            </li>
+            <li class="issue info">
+              <span class="sev">FILE</span>
+              <div><div class="title">最终签认资料待归档核对</div><div class="desc">当前目录未见最新签认结果、最终追溯总表及完整试验电子报告；已记录制作完成确认，文件归档状态按现有资料保留。</div></div>
+            </li>
+          </ul>
+          <details>
+            <summary>查看 07-30 历史审核项（处理结果待归档核对）</summary>
+          <ul class="issue-list">
+            <li class="issue crit">
+              <span class="sev">BLOCK</span>
+              <div>
+                <div class="title">材料混用未拆清</div>
+                <div class="desc">081 批 35 根：约 1/3 通达 + 约 2/3 前证（康弘等）。须船东出管段号 ↔ 炉批 / 厂家 / 质保号对照。</div>
+              </div>
+            </li>
+            <li class="issue warn">
+              <span class="sev">WAIT</span>
+              <div>
+                <div class="title">缺电子版报告</div>
+                <div class="desc">探伤报告、现场试验报告：纸质已见，电子版未到；到后放入 <code>建造_1-10_进行中_2026-07-30/</code> 再分析。</div>
+              </div>
+            </li>
+            <li class="issue warn">
+              <span class="sev">OPEN</span>
+              <div>
+                <div class="title">前批康弘路径遗留</div>
+                <div class="desc">工厂认可过期、认可壁厚 16 mm 上限；通达路径（有效至 2027-11-21、壁厚 2–23）仅覆盖通达段。</div>
+              </div>
+            </li>
+            <li class="issue info">
+              <span class="sev">NOTE</span>
+              <div>
+                <div class="title">05-19 历史 NDT 数据缺项</div>
+                <div class="desc">05-19 追溯总表约 2,108 条无 NDT 数据；属于历史快照，最新数据待归档核对。</div>
+              </div>
+            </li>
+            <li class="issue ok">
+              <span class="sev">DONE</span>
+              <div>
+                <div class="title">通达证 + I 级 WPS</div>
+                <div class="desc">通达产品证与工厂认可已归档；WPS-CCS-2025002 / 2025003 覆盖 Φ114×17。</div>
+              </div>
+            </li>
+          </ul>
+          </details>
         </div>
       </div>
     </section>
 
-    <details style="margin-bottom:2.5rem;border:1px solid var(--line);border-radius:var(--radius);padding:1rem 1.2rem">
-      <summary style="cursor:pointer;color:var(--text-muted);font-size:0.9rem">查看 2026-05-19 历史工序、区域及系统统计</summary>
-      <p style="margin:0.8rem 0 1.2rem;font-size:0.82rem;color:var(--text-muted)">以下为首次追溯总表的历史快照；当前场外管系制作已全部完成。各工序、区域与系统的最新逐项统计尚未归档。</p>
+    <!-- 水压报验表 -->
+    <section id="inspections">
+      <div class="sec-head">
+        <h2>水压报验台账</h2>
+        <span class="hint">四批管段编号无重叠 · 累计 128 根（HC 126 / CH 2）</span>
+      </div>
+      <div class="panel">
+        <div class="table-wrap"><table>
+          <thead>
+            <tr>
+              <th>次序</th>
+              <th>报验单号</th>
+              <th>日期</th>
+              <th class="num">数量</th>
+              <th>状态口径</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td><code>C30-DS-SY-049</code></td>
+              <td>2026-06-12</td>
+              <td class="num">24</td>
+              <td>已报验待结果确认</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td><code>C30-DS-SY-065</code></td>
+              <td>2026-07-01</td>
+              <td class="num">38</td>
+              <td>I 级证书材料已收；康弘问题待澄清</td>
+            </tr>
+            <tr class="highlight">
+              <td>3</td>
+              <td><code>C30-DS-SY-081</code></td>
+              <td>2026-07-30</td>
+              <td class="num">35</td>
+              <td>南通现场；混用 + 电子报告未到，不记签认完成</td>
+            </tr>
+            <tr class="highlight">
+              <td>4</td>
+              <td><code>C30-DS-SY-103</code></td>
+              <td>2026-09-09 现场<br><small>原报验日期：09-08</small></td>
+              <td class="num">31</td>
+              <td>HC 29 / CH 2；最后一次现场，签认资料待归档核对</td>
+            </tr>
+            <tr>
+              <td colspan="3"><strong>累计报验</strong></td>
+              <td class="num"><strong>128</strong></td>
+              <td>HC 126 / CH 2；制作完成状态已由负责人确认</td>
+            </tr>
+          </tbody>
+        </table></div>
+      </div>
+    </section>
+
+    <details id="history">
+      <summary>查看 2026-05-19 历史工序、区域及系统统计</summary>
+      <p>以下为首次追溯总表的历史快照；当前场外管系制作已全部完成。各工序、区域与系统的最新逐项统计尚未归档。</p>
     <!-- 管系工序 -->
     <section>
       <div class="sec-head">
@@ -945,7 +527,7 @@
             <div class="pct">76.3%</div>
           </div>
         </div>
-        <p style="margin-top:1rem;font-size:0.8rem;color:var(--text-dim)">
+        <p>
           完成 / 剩余：装配 1,862 / 261 · 外观 1,739 / 384 · 试压 1,620 / 503
         </p>
       </div>
@@ -957,7 +539,7 @@
         <h2>区域与关键系统</h2>
         <span class="hint">2026-05-19 历史状态 · 不代表当前进度</span>
       </div>
-      <div class="region-grid" style="margin-bottom:1.25rem">
+      <div class="region-grid">
         <div class="region">
           <div class="r-name">压载舱</div>
           <div class="r-count">761 根</div>
@@ -1016,7 +598,7 @@
 
       <div class="panel">
         <h3>关键系统（节选）</h3>
-        <table>
+        <div class="table-wrap"><table>
           <thead>
             <tr>
               <th>系统</th>
@@ -1070,8 +652,8 @@
               <td class="num">0%</td>
             </tr>
           </tbody>
-        </table>
-        <p style="margin-top:0.75rem;font-size:0.78rem;color:var(--text-dim)">
+        </table></div>
+        <p>
           * HC 试压 0% 为 05-19 历史统计；其后四批水压报验合计 128 根（HC 126、CH 2）。场外制作完成状态以本页最新确认记录为准。
         </p>
       </div>
@@ -1079,198 +661,11 @@
 
     </details>
 
-    <!-- 时间线 + 归档状态 -->
-    <section>
-      <div class="sec-head">
-        <h2>现场节点与归档状态</h2>
-      </div>
-      <div class="cols">
-        <div class="panel">
-          <h3>关键节点</h3>
-          <ul class="timeline">
-            <li>
-              <div class="date">2026-05-19</div>
-              <div class="body">
-                <strong>管系追溯总表归档</strong>
-                <p>2,123 根；装配 87.7% / 外观 81.9% / 试压 76.3%。建造全局进度待其他专业补充。</p>
-                <div class="tags"><span class="badge info">管系追溯</span></div>
-              </div>
-            </li>
-            <li>
-              <div class="date">2026-06-12</div>
-              <div class="body">
-                <strong>第一次 HC 水压报验</strong>
-                <p><code>C30-DS-SY-049</code> · 24 根 · 已报验待结果确认。</p>
-                <div class="tags"><span class="badge info">049 · 24 根</span></div>
-              </div>
-            </li>
-            <li>
-              <div class="date">2026-07-01</div>
-              <div class="body">
-                <strong>第二次 HC 水压报验（标准档）</strong>
-                <p><code>C30-DS-SY-065</code> · 38 根 · I 级证书及试验资料；康弘认可有效期 / 壁厚 16 mm 上限等问题待澄清。累计 62 根。</p>
-                <div class="tags"><span class="badge warn">065 · 38 根</span></div>
-              </div>
-            </li>
-            <li>
-              <div class="date">2026-07-14</div>
-              <div class="body">
-                <strong>WPS 审核</strong>
-                <p>I 级确认覆盖（2025002/003）；Ⅲ 级 Φ27×4 暂认 2026008。Excel 与 PDF 仍有差异。</p>
-                <div class="tags"><span class="badge ok">I 级 WPS 覆盖</span></div>
-              </div>
-            </li>
-            <li>
-              <div class="date">2026-07-30</div>
-              <div class="body">
-                <strong>第三次 HC 水压 · 南通现场</strong>
-                <p><code>C30-DS-SY-081</code> · 35 根 I 级 Φ114×17 · 52.5 MPa · Heng Xv Workshop。累计 <strong>97 根</strong>待签认。通达与前批材料混用（约 1/3 + 2/3）。</p>
-                <div class="tags">
-                  <span class="badge live">081 · 35 根</span>
-                  <span class="badge ok">WPS 2025002/003</span>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="date">2026-09-09</div>
-              <div class="body">
-                <strong>最后一次现场 · 南通思英</strong>
-                <p><code>C30-DS-SY-103</code> · 第四次水压报验资料 · 31 根（HC 29、CH 2）。原资料报验日期为 09-08，实际到场为 09-09；累计报验 128 根。</p>
-                <div class="tags"><span class="badge info">103 · 31 根</span><span class="badge ok">最后现场 09-09</span></div>
-              </div>
-            </li>
-            <li>
-              <div class="date">2026-10-02</div>
-              <div class="body">
-                <strong>场外管系制作全部完成 · 状态确认</strong>
-                <p>项目负责人确认场外管系制作已经全部完成，制作进度更新为 100%（10–10）。</p>
-                <div class="tags"><span class="badge ok">制作完成</span></div>
-              </div>
-            </li>
-          </ul>
-        </div>
-
-        <div class="panel">
-          <h3>制作与资料归档</h3>
-          <ul class="issue-list" style="margin-bottom:1rem">
-            <li class="issue ok">
-              <span class="sev">DONE</span>
-              <div><div class="title">场外管系制作全部完成</div><div class="desc">100% · ██████████ · 10–10。状态来源：项目负责人 2026-10-02 确认。</div></div>
-            </li>
-            <li class="issue info">
-              <span class="sev">INFO</span>
-              <div><div class="title">最新资料：103 批</div><div class="desc">报验单、材料证书、工厂认可、泵压工装及审核报告已归档。原资料日期 09-08，实际最后现场日期 09-09。</div></div>
-            </li>
-            <li class="issue info">
-              <span class="sev">FILE</span>
-              <div><div class="title">最终签认资料待归档核对</div><div class="desc">当前目录未见最新签认结果、最终追溯总表及完整试验电子报告；已记录制作完成确认，文件归档状态按现有资料保留。</div></div>
-            </li>
-          </ul>
-          <details>
-            <summary style="cursor:pointer;color:var(--text-muted);font-size:0.85rem">查看 07-30 历史审核项（处理结果待归档核对）</summary>
-          <ul class="issue-list">
-            <li class="issue crit">
-              <span class="sev">BLOCK</span>
-              <div>
-                <div class="title">材料混用未拆清</div>
-                <div class="desc">081 批 35 根：约 1/3 通达 + 约 2/3 前证（康弘等）。须船东出管段号 ↔ 炉批 / 厂家 / 质保号对照。</div>
-              </div>
-            </li>
-            <li class="issue warn">
-              <span class="sev">WAIT</span>
-              <div>
-                <div class="title">缺电子版报告</div>
-                <div class="desc">探伤报告、现场试验报告：纸质已见，电子版未到；到后放入 <code>建造_1-10_进行中_2026-07-30/</code> 再分析。</div>
-              </div>
-            </li>
-            <li class="issue warn">
-              <span class="sev">OPEN</span>
-              <div>
-                <div class="title">前批康弘路径遗留</div>
-                <div class="desc">工厂认可过期、认可壁厚 16 mm 上限；通达路径（有效至 2027-11-21、壁厚 2–23）仅覆盖通达段。</div>
-              </div>
-            </li>
-            <li class="issue info">
-              <span class="sev">NOTE</span>
-              <div>
-                <div class="title">05-19 历史 NDT 数据缺项</div>
-                <div class="desc">05-19 追溯总表约 2,108 条无 NDT 数据；属于历史快照，最新数据待归档核对。</div>
-              </div>
-            </li>
-            <li class="issue ok">
-              <span class="sev">DONE</span>
-              <div>
-                <div class="title">通达证 + I 级 WPS</div>
-                <div class="desc">通达产品证与工厂认可已归档；WPS-CCS-2025002 / 2025003 覆盖 Φ114×17。</div>
-              </div>
-            </li>
-          </ul>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <!-- 水压报验表 -->
-    <section>
-      <div class="sec-head">
-        <h2>水压报验序列（HC / CH）</h2>
-        <span class="hint">四批管段编号无重叠 · 累计 128 根（HC 126 / CH 2）</span>
-      </div>
-      <div class="panel">
-        <table>
-          <thead>
-            <tr>
-              <th>次序</th>
-              <th>报验单号</th>
-              <th>日期</th>
-              <th class="num">数量</th>
-              <th>状态口径</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td><code>C30-DS-SY-049</code></td>
-              <td>2026-06-12</td>
-              <td class="num">24</td>
-              <td>已报验待结果确认</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td><code>C30-DS-SY-065</code></td>
-              <td>2026-07-01</td>
-              <td class="num">38</td>
-              <td>I 级证书材料已收；康弘问题待澄清</td>
-            </tr>
-            <tr class="highlight">
-              <td>3</td>
-              <td><code>C30-DS-SY-081</code></td>
-              <td>2026-07-30</td>
-              <td class="num">35</td>
-              <td>南通现场；混用 + 电子报告未到，不记签认完成</td>
-            </tr>
-            <tr class="highlight">
-              <td>4</td>
-              <td><code>C30-DS-SY-103</code></td>
-              <td>2026-09-09 现场<br><small>原报验日期：09-08</small></td>
-              <td class="num">31</td>
-              <td>HC 29 / CH 2；最后一次现场，签认资料待归档核对</td>
-            </tr>
-            <tr>
-              <td colspan="3"><strong>累计报验</strong></td>
-              <td class="num"><strong>128</strong></td>
-              <td>HC 126 / CH 2；制作完成状态已由负责人确认</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
     <!-- 资料索引 -->
-    <section>
+    <section id="archives">
       <div class="sec-head">
-        <h2>资料索引</h2>
-        <span class="hint">与仓库阶段文件夹对应</span>
+        <h2>资料归档</h2>
+        <span class="hint">按归档批次查阅</span>
       </div>
       <div class="archive">
         <div class="item">
@@ -1325,9 +720,10 @@
     </section>
 
     <footer>
+      <span class="footer-brand">浮船坞工程纪要</span>
       <span>制作完成与实际现场日期依据项目负责人确认 · 历史统计依据本地归档资料</span>
       <span>更新于 2026-10-02 · 最后现场 2026-09-09 · 最新资料 C30-DS-SY-103</span>
     </footer>
-  </div>
+  </main>
 </body>
 </html>
